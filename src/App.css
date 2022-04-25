@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio&family=Square+Peg&display=swap');
+
+.navigator {
+    background: linear-gradient(#72dbf2, #8a99bf 90% );
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    height: 8rem;
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+}
+
+.action-buttons{
+    align-content: space-around;
+    margin: .5rem;
+    align-items: flex-end;
+}
+
+.custom-buttons {
+    background: linear-gradient(15deg, #72d8f2, #f26d85);
+    border: #8a99bf;
+    font-size: 30pt;
+    font-family: 'Antonio', sans-serif;
+    color: white;
+}
+
+h1{
+    font-size: 64pt;
+    font-family: 'Antonio', sans-serif;
+}
+
+h2{
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+}
+
+h3{
+    font-size: 30pt;
+    font-family: 'Square Peg', cursive;
+    color: #72d8f2;
+}
+
+.offcanvas {
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+    background-color: #72d8f2;
+}
+
+a {
+    color:#8a99bf !important;
+    text-decoration: none !important;
+}
+
+a:hover{
+    color: #f26d85;
+}
+
+.offcanvas {
+    background-color: #72dbf2;
+    visibility: visible !important;
+}
+
+.octitle {
+    color: #8a99bf;
+    flex-direction: row;
+}
