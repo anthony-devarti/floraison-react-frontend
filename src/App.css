@@ -68,3 +68,73 @@ a:hover{
     color: #8a99bf;
     flex-direction: row;
 }
+
+.tiles {
+    align-items: center;
+}
+
+.tile {
+    width: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+}
+
+.cookies {
+    background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png');
+    z-index: 1;
+    background-size:cover;
+}
+
+.cookies:hover {
+    background-color: #72dbf2;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 30pt;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    transition: ease-in-out;
+}
+
+.cupcakes {
+    background-image: url('/workspace/floraison-react-frontend/public/images/cupcake.jpeg');
+    z-index: 1;
+    background-size:cover;
+}
+
+.cupcakes:hover {
+    background-color: #8a99bf;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 30pt;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+}
+
+.cakes {
+    background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+    z-index: 1;
+    background-size:cover;
+}
+
+.cakes:hover {
+    background-color: #f26d85;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 30pt;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    transition: ease-in-out;
+}

@@ -1,4 +1,5 @@
 import Cupcakes from "./routes/cupcakes";
+import axios from 'axios'
 
 let cupcakeMenu = [
     {
@@ -42,3 +43,15 @@ let cupcakeMenu = [
           (cupcake) => cupcake.number === number
       )
   }
+
+ //Setting up the fetch to grab all of the menu items from here
+
+  export async function getMenu() {
+    try {
+      const response = await axios.get('https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us42.gitpod.io/floraison/items/');
+    } catch (error){
+      console.log(error)
+    }
+  }
+ 
+//
