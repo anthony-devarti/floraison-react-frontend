@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { axiosGet } from "../data";
-import { Card, Button, Container } from 'react-bootstrap'
+import { Card, Button } from 'react-bootstrap'
 
 export default function Cookies() {
 

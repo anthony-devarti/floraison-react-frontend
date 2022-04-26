@@ -2,15 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
 import { Button, Navbar, Offcanvas, Nav, Container } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import Tiles from "./components/Tiles";
 import "./App.css";
-import { axiosGet } from "./data";
 
 function App() {
-
-  const [products, setProducts] = useState([]);
   
 
   //Places to handle button behavior

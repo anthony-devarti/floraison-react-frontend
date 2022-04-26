@@ -1,10 +1,7 @@
 import { useEffect } from "react";
-import { axiosGet, getMenu, sendGetRequest } from "../data";
-import axios from "axios";
+import { axiosGet } from "../data";
 import { useState } from "react";
-import ProductCard from "../components/ProductCard";
-import { Card, Button, Container } from 'react-bootstrap'
-import { useParams } from "react-router";
+import { Card, Button } from 'react-bootstrap'
 
 export default function Cakes() {
   const [cakeItems, setCakeItems] = useState([]);
