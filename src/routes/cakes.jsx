@@ -17,7 +17,7 @@ export default function Cakes() {
     fetchData();
   }, []);
 
-  let cakes = cakeItems.filter( product => product.category==1)
+  let cakes = cakeItems.filter( product => product.category===1)
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -27,11 +27,12 @@ export default function Cakes() {
         
           {cakes.map((cake) => (
             <Card key={cake.name} border="dark" style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={cake.image} />
+            <Card.Img variant="top" src={'/floraison/' + cake.photo} />
             <Card.Body>
               <Card.Title>{cake.name}</Card.Title>
               <Card.Text>
                 {cake.description}
+                {console.log('Photo: ' +cake.photo)}
                 {cake.price}
               </Card.Text>
               <Button variant="primary">Add to Cart</Button>

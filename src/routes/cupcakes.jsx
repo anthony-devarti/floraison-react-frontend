@@ -16,7 +16,7 @@ export default function Cupcakes() {
     fetchData();
   }, []);
 
-  let cupcakes = cupcakeItems.filter( product => product.category==3 && product.published==true)
+  let cupcakes = cupcakeItems.filter( product => product.category===3 && product.published===true)
     return (
         <main style={{ padding: "1rem 0" }}>
           <h2>Cupcakes</h2>
@@ -25,7 +25,7 @@ export default function Cupcakes() {
             
               {cupcakes.map((cupcake) => (
                 <Card key={cupcake.name} border="dark" style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={cupcake.image} />
+                <Card.Img variant="top" src={cupcake.photo} />
                 <Card.Body>
                   <Card.Title>{cupcake.name}</Card.Title>
                   <Card.Text>

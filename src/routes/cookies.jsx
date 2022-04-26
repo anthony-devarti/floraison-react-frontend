@@ -17,7 +17,7 @@ export default function Cookies() {
     fetchData();
   }, []);
 
-  let cookies = cookieItems.filter( product => product.category==2 && product.published==true)
+  let cookies = cookieItems.filter( product => product.category===2 && product.published===true)
     return (
         <main style={{ padding: "1rem 0" }}>
           <h2>Cookies</h2>
