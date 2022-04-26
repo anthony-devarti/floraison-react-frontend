@@ -11,19 +11,6 @@ import { axiosGet } from "./data";
 function App() {
 
   const [products, setProducts] = useState([]);
-
-  useEffect( () => {
-    async function fetchData() {
-      // You can await here
-      const response = await axiosGet()
-      setProducts(response.results)
-      // ...
-      console.log({response})
-    }
-    fetchData();
-  }, []);
-
-  let cakes = products.filter( product => product.category==1)
   
 
   //Places to handle button behavior
