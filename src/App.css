@@ -44,6 +44,12 @@ h3{
     color: #72d8f2;
 }
 
+h4 {
+    font-size: 15rem;
+    font-family: 'Antonio', sans-serif;
+    color: #8a99bf;
+}
+
 .offcanvas {
     font-size: 40pt;
     font-family: 'Antonio', sans-serif;
@@ -51,8 +57,8 @@ h3{
 }
 
 a {
-    color:#8a99bf !important;
     text-decoration: none !important;
+    color: white !important;
 }
 
 a:hover{
@@ -60,7 +66,7 @@ a:hover{
 }
 
 .offcanvas {
-    background-color: #72dbf2;
+    background-color:#8a99bf !important;
     visibility: visible !important;
 }
 
@@ -84,6 +90,13 @@ a:hover{
     background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png');
     z-index: 1;
     background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
 }
 
 .cookies:hover {
@@ -94,16 +107,24 @@ a:hover{
     font-size: 30pt;
     color: white;
     font-family: 'Square Peg', cursive;
-    width: 33vw;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
     padding-bottom: 33vw;
     display: -moz-inline-grid;
-    transition: ease-in-out;
 }
 
 .cupcakes {
     background-image: url('/workspace/floraison-react-frontend/public/images/cupcake.jpeg');
     z-index: 1;
     background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
 }
 
 .cupcakes:hover {
@@ -114,7 +135,9 @@ a:hover{
     font-size: 30pt;
     color: white;
     font-family: 'Square Peg', cursive;
-    width: 33vw;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
     padding-bottom: 33vw;
     display: -moz-inline-grid;
 }
@@ -123,6 +146,13 @@ a:hover{
     background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
     z-index: 1;
     background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
 }
 
 .cakes:hover {
@@ -133,8 +163,34 @@ a:hover{
     font-size: 30pt;
     color: white;
     font-family: 'Square Peg', cursive;
-    width: 33vw;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
     padding-bottom: 33vw;
     display: -moz-inline-grid;
-    transition: ease-in-out;
+}
+
+.tile-text {
+    padding-top: 50%;
+}
+
+.offcanvas-body {
+    background-color: #8a99bf;
+}
+
+.offcanvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    background-color: #8a99bf;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.offcanvas-header .btn-close {
+    position: absolute;
+    top: 20px;
+    color: white;
 }

@@ -1,4 +1,3 @@
-import "./App.css";
 import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
@@ -6,6 +5,7 @@ import { Button, Navbar, Offcanvas, Nav, Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import Tiles from "./components/Tiles";
+import "./App.css";
 
 function App() {
 
@@ -57,7 +57,7 @@ function App() {
               </Offcanvas.Title>
             </Offcanvas.Header>
             <Offcanvas.Body>
-              <Nav className="justify-content-end flex-grow-1 pe-3">
+              <Nav className="justify-content-end flex-grow-1 pe-3 hamburger">
                 <Link to="/">Home</Link>
                 <Link to="/cookies">Cookies</Link>
                 <Link to="/cakes">Cakes</Link>
