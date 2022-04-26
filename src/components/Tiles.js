@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 
 export default function Tiles() {
   return (
+    <>
+    <div className="superheader">Follow your bliss</div>
     <Row className="tiles">
       <Col className="tile cakes">
         <div className="tile-text">
@@ -20,5 +22,6 @@ export default function Tiles() {
         </div>
       </Col>
     </Row>
+    </>
   );
 }

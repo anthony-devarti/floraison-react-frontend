@@ -28,6 +28,14 @@
     color: white;
 }
 
+.superheader {
+    font-size: 10rem;
+    color: inherit;
+    font-family: 'Antonio', sans-serif;
+    text-align: center;
+    height: 100vh-33vw;
+}
+
 h1{
     font-size: 64pt;
     font-family: 'Antonio', sans-serif;
