@@ -16,7 +16,7 @@ export default function Tiles() {
       </Col>
       <Col className="tile cupcakes">
         <div className="tile-text">
-          <Link to="/cupcake">Cupcake</Link>
+          <Link to="/cupcakes">Cupcake</Link>
         </div>
       </Col>
     </Row>
