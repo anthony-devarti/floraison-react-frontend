@@ -21,6 +21,7 @@ function App() {
   //Time to set this up.  cart is stored in state, here.  I'll figure out local storage later
   //I need to be able to pass these props down to the routes below.
   //I'm going to need help on this, since I'm not sure how to do it.
+  //The focus being on how to track down passing state down to components while using react router dom
   const [cart, setCart] = useState(['summat is in here'])
 
   const addToCart = (product) =>  {
