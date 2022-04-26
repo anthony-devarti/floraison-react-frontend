@@ -58,7 +58,7 @@ h4 {
 
 a {
     text-decoration: none !important;
-    color: white !important;
+    color: inherit !important;
 }
 
 .offcanvas {
@@ -100,7 +100,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -128,7 +128,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -156,7 +156,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -207,4 +207,9 @@ a {
     position: absolute;
     bottom: 8px;
     left: 8px;
+}
+
+.card-image {
+    height: "20rem";
+    object-fit:"cover";
 }

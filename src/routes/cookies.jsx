@@ -17,6 +17,7 @@ export default function Cookies() {
     fetchData();
   }, []);
 
+
   let cookies = cookieItems.filter( product => product.category===2 && product.published===true)
     return (
         <main style={{ padding: "1rem 0" }}>
@@ -25,17 +26,19 @@ export default function Cookies() {
           <div className="products">
             
               {cookies.map((cookie) => (
-                <Card key={cookie.name} border="dark" style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={cookie.photo} />
-                <Card.Body>
-                  <Card.Title>{cookie.name}</Card.Title>
-                  <Card.Text>
-                    {cookie.description}
-                    {cookie.price}
-                  </Card.Text>
-                  <Button variant="primary">Add to Cart</Button>
-                </Card.Body>
-              </Card>
+               <Card key={cookie.name} border="dark" style={{ width: "18rem" }}>
+               <Card.Img src={cookie.photo} />
+               <Card.Body>
+                 <Card.Title>{cookie.name}</Card.Title>
+                 <Card.Text>{cookie.description}</Card.Text>
+                 <Card.Footer className="dan-schneider">
+                   <Button className="custom-buttons card-buttons">
+                     Add to Cart
+                   </Button>
+                   <p style={{ textAlign: "right"}}>{cookie.starting_price}</p>
+                 </Card.Footer>
+               </Card.Body>
+             </Card>
               ))}
             
             

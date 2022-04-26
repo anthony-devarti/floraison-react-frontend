@@ -26,12 +26,12 @@ export default function Cakes() {
       <div className="products">
         {cakes.map((cake) => (
           <Card key={cake.name} border="dark" style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={cake.photo} />
+            <Card.Img src={cake.photo} />
             <Card.Body>
               <Card.Title>{cake.name}</Card.Title>
               <Card.Text>{cake.description}</Card.Text>
               <Card.Footer className="dan-schneider">
-                <Button className="custom-buttons card-buttons" variant="primary">
+                <Button className="custom-buttons card-buttons">
                   Add to Cart
                 </Button>
                 <p style={{ textAlign: "right"}}>{cake.starting_price}</p>

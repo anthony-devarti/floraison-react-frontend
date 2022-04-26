@@ -3,18 +3,28 @@ import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
 import { Button, Navbar, Offcanvas, Nav, Container } from "react-bootstrap";
 import Tiles from "./components/Tiles";
+import { useState } from 'react'
 import "./App.css";
 
 function App() {
   
-
+  
   //Places to handle button behavior
   function cartHandler() {
     console.log("do cart stuff here");
   }
-
+  
   function loginHandler() {
     console.log("do login stuff here");
+  }
+  
+  //Time to set this up.  cart is stored in state, here.  I'll figure out local storage later
+  //I need to be able to pass these props down to the routes below.
+  //I'm going to need help on this, since I'm not sure how to do it.
+  const [cart, setCart] = useState(['summat is in here'])
+
+  const addToCart = (product) =>  {
+    setCart([...cart, product])
   }
 
   return (
@@ -64,7 +74,7 @@ function App() {
                   }
                 }}
                   >Home</Link>
-                <Link to="/cookies" >Cookies</Link>
+                <Link to="/cookies" state={{cart}}>Cookies</Link>
                 <Link to="/cakes">Cakes</Link>
                 <Link to="/cupcakes">Cupcakes</Link>
               </Nav>
