@@ -61,10 +61,6 @@ a {
     color: white !important;
 }
 
-a:hover{
-    color: #f26d85;
-}
-
 .offcanvas {
     background-color:#8a99bf !important;
     visibility: visible !important;
@@ -193,4 +189,11 @@ a:hover{
     position: absolute;
     top: 20px;
     color: white;
+}
+
+.products {
+    display: flex;
+    align-content: space-between;
+    margin: 2rem;
+    flex-wrap: wrap;
 }

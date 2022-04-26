@@ -1,34 +1,47 @@
 import { useEffect } from "react";
-import { axiosGet, getMenu, sendGetRequest } from "../data";
-import axios from "axios";
+import { axiosGet } from "../data";
 import { useState } from "react";
+import { Card, Button } from 'react-bootstrap'
 
 export default function Cakes() {
-  // let menu = sendGetRequest().then(response => response.data)
-  let menu = axiosGet()
-  console.log(menu)
-  
-  // let fullMenu = getMenu();
+  const [cakeItems, setCakeItems] = useState([]);
 
-  // console.log (fullMenu)
-  // let cakeMenu = menu.filter(item => item.category !=1)
-  // console.log(cakeMenu)
- 
+  useEffect( () => {
+    async function fetchData() {
+      // You can await here
+      const response = await axiosGet()
+      setCakeItems(response.results)
+      // ...
+      console.log({response})
+    }
+    fetchData();
+  }, []);
 
-
-  // {cakes.map(([cakes, cake]) => (
-  //   <>
-  //     <h1>Name: {cake.name}</h1>
-  //     <h2>Description: {cake.description}</h2>
-  //     <h3>Price: {cake.price}</h3>
-  //   </>
-  // ))}
+  let cakes = cakeItems.filter( product => product.category===1)
 
   return (
     <main style={{ padding: "1rem 0" }}>
       <h2>Cakes</h2>
       <p>This is the cakes page.</p>
-      
+      <div className="products">
+        
+          {cakes.map((cake) => (
+            <Card key={cake.name} border="dark" style={{ width: "18rem" }}>
+            <Card.Img variant="top" src={cake.photo} />
+            <Card.Body>
+              <Card.Title>{cake.name}</Card.Title>
+              <Card.Text>
+                {cake.description}
+                {console.log('Photo: ' +cake.photo)}
+                {cake.price}
+              </Card.Text>
+              <Button variant="primary">Add to Cart</Button>
+            </Card.Body>
+          </Card>
+          ))}
+        
+        
+      </div>
     </main>
   );
 }

@@ -2,41 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
 import { Button, Navbar, Offcanvas, Nav, Container } from "react-bootstrap";
-import { useState, useEffect } from "react";
-import axios from "axios";
 import Tiles from "./components/Tiles";
 import "./App.css";
-import { axiosGet } from "./data";
 
 function App() {
-
-  const [products, setProducts] = useState([]);
-
-  useEffect(() => {
-    axiosGet();
-  }, []);
-  const axiosGet = () => {
-    axios
-      .get('https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us42.gitpod.io/floraison/items/')
-      .then((res) => {
-        console.log(res);
-        let categories={};
-        for (let item of res.data.results) {
-          let category = categories[item.category.title];
-          //controls for a new category
-          if (!category){
-            category = []
-            categories[item.category.title]=category
-          }
-          category.push(item);
-        }
-        console.log(categories)
-        setProducts([...Object.entries(categories)]);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
+  
 
   //Places to handle button behavior
   function cartHandler() {
@@ -87,8 +57,14 @@ function App() {
             </Offcanvas.Header>
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3 hamburger">
-                <Link to="/">Home</Link>
-                <Link to="/cookies">Cookies</Link>
+                <Link to={{
+                  pathname: "/",
+                  state: {
+                    fromHome: true
+                  }
+                }}
+                  >Home</Link>
+                <Link to="/cookies" >Cookies</Link>
                 <Link to="/cakes">Cakes</Link>
                 <Link to="/cupcakes">Cupcakes</Link>
               </Nav>
@@ -96,8 +72,8 @@ function App() {
           </Navbar.Offcanvas>
         </Container>
       </Navbar>
-      <Outlet />
       <Tiles />
+      <Outlet />
     </div>
   );
 }
