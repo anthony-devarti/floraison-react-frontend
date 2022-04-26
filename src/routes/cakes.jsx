@@ -1,14 +1,16 @@
 import { useEffect } from "react";
-import { getMenu } from "../data";
+import { axiosGet, getMenu, sendGetRequest } from "../data";
 import axios from "axios";
 import { useState } from "react";
 
 export default function Cakes() {
-
+  // let menu = sendGetRequest().then(response => response.data)
+  let menu = axiosGet()
+  console.log(menu)
   
-  let fullMenu = getMenu();
+  // let fullMenu = getMenu();
 
-  console.log (fullMenu)
+  // console.log (fullMenu)
   // let cakeMenu = menu.filter(item => item.category !=1)
   // console.log(cakeMenu)
  

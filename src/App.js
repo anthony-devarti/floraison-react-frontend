@@ -6,8 +6,37 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import Tiles from "./components/Tiles";
 import "./App.css";
+import { axiosGet } from "./data";
 
 function App() {
+
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    axiosGet();
+  }, []);
+  const axiosGet = () => {
+    axios
+      .get('https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us42.gitpod.io/floraison/items/')
+      .then((res) => {
+        console.log(res);
+        let categories={};
+        for (let item of res.data.results) {
+          let category = categories[item.category.title];
+          //controls for a new category
+          if (!category){
+            category = []
+            categories[item.category.title]=category
+          }
+          category.push(item);
+        }
+        console.log(categories)
+        setProducts([...Object.entries(categories)]);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   //Places to handle button behavior
   function cartHandler() {
