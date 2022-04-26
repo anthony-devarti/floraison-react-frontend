@@ -197,3 +197,14 @@ a {
     margin: 2rem;
     flex-wrap: wrap;
 }
+
+.dan-schneider {
+    align-content: space-around;
+    height: min-content;
+}
+
+.card-buttons {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
