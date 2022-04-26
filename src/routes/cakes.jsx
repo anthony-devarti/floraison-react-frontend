@@ -27,7 +27,7 @@ export default function Cakes() {
         
           {cakes.map((cake) => (
             <Card key={cake.name} border="dark" style={{ width: "18rem" }}>
-            <Card.Img variant="top" src={'/floraison/' + cake.photo} />
+            <Card.Img variant="top" src={cake.photo} />
             <Card.Body>
               <Card.Title>{cake.name}</Card.Title>
               <Card.Text>

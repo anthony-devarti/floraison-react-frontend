@@ -26,7 +26,7 @@ export default function Cookies() {
             
               {cookies.map((cookie) => (
                 <Card key={cookie.name} border="dark" style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={cookie.image} />
+                <Card.Img variant="top" src={cookie.photo} />
                 <Card.Body>
                   <Card.Title>{cookie.name}</Card.Title>
                   <Card.Text>
