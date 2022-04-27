@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 export default function Tiles() {
   return (
-    <>
+    <div className="full-screen">
     <div className="superheader">Follow your bliss</div>
     <Row className="tiles">
       <Col className="tile cakes">
@@ -22,6 +22,6 @@ export default function Tiles() {
         </div>
       </Col>
     </Row>
-    </>
+    </div>
   );
 }
