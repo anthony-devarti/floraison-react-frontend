@@ -26,6 +26,15 @@
     font-size: 30pt;
     font-family: 'Antonio', sans-serif;
     color: white;
+    padding: 1rem;
+}
+
+.superheader {
+    font-size: 10rem;
+    color: inherit;
+    font-family: 'Antonio', sans-serif;
+    text-align: center;
+    height: 100vh-33vw;
 }
 
 h1{
@@ -58,7 +67,7 @@ h4 {
 
 a {
     text-decoration: none !important;
-    color: white !important;
+    color: inherit !important;
 }
 
 .offcanvas {
@@ -100,7 +109,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -128,7 +137,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -156,7 +165,7 @@ a {
     background-image: none;
     z-index: 2;
     text-align: center;
-    font-size: 30pt;
+    font-size: 8rem;
     color: white;
     font-family: 'Square Peg', cursive;
     width: 35vw;
@@ -196,4 +205,20 @@ a {
     align-content: space-between;
     margin: 2rem;
     flex-wrap: wrap;
+}
+
+.dan-schneider {
+    align-content: space-around;
+    height: min-content;
+}
+
+.card-buttons {
+    position: absolute;
+    bottom: 8px;
+    left: 8px;
+}
+
+.card-image {
+    height: "20rem";
+    object-fit:"cover";
 }
