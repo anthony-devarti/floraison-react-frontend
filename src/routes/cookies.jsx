@@ -20,11 +20,7 @@ export default function Cookies() {
   const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
   const addToCart = (product) => {
-    console.log('running add to cart')
-    //cart is showing as undefined.  It should be an array with one example item in
-    console.log(cart)
     dispatch([cart.push(product)])
-    console.log(cart)
   }
 
   let cookies = cookieItems.filter( product => product.category===2 && product.published===true)

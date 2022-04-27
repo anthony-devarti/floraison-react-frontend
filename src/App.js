@@ -65,11 +65,7 @@ function App() {
             <Offcanvas.Body>
               <Nav className="justify-content-end flex-grow-1 pe-3 hamburger">
                 <Link to= "/">Home</Link>
-                <Link to={{
-                pathname: "/cookies",
-                state: cart
-                }}
-                >Cookies</Link>
+                <Link to="/cookies">Cookies</Link>
                 <Link to="/cakes">Cakes</Link>
                 <Link to="/cupcakes">Cupcakes</Link>
               </Nav>

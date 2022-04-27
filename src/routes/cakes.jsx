@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { axiosGet } from "../data";
 import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
+import { useGlobalState } from "../components/GlobalState";
 
 export default function Cakes() {
   const [cakeItems, setCakeItems] = useState([]);
@@ -19,6 +20,13 @@ export default function Cakes() {
 
   let cakes = cakeItems.filter((product) => product.category === 1);
 
+  //cart behavior
+  const [ state, dispatch ] = useGlobalState();
+  let cart = state.cart
+  const addToCart = (product) => {
+    dispatch([cart.push(product)])
+  }
+
   return (
     <main style={{ padding: "1rem 0" }}>
       <h2>Cakes</h2>
@@ -31,7 +39,7 @@ export default function Cakes() {
               <Card.Title>{cake.name}</Card.Title>
               <Card.Text>{cake.description}</Card.Text>
               <Card.Footer className="dan-schneider">
-                <Button className="custom-buttons card-buttons">
+                <Button onClick={()=> addToCart(cake)} className="custom-buttons card-buttons">
                   Add to Cart
                 </Button>
                 <p style={{ textAlign: "right"}}>{cake.starting_price}</p>
