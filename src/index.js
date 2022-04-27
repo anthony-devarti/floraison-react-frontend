@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "./routes/cookies";
 import Cakes from "./routes/cakes";
 import Cupcakes from "./routes/cupcakes";
+import CartViewer from "./routes/CartViewer"
 import { GlobalProvider } from "./components/GlobalState";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -20,6 +21,7 @@ root.render(
           <Route path="cookies" element={<Cookies />} />
           <Route path="cakes" element={<Cakes />} />
           <Route path="cupcakes" element={<Cupcakes />} />
+          <Route path="cart" element={<CartViewer />} />
         </Route>
       </Routes>
     </BrowserRouter>

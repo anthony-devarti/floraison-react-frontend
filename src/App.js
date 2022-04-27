@@ -68,6 +68,7 @@ function App() {
                 <Link to="/cookies">Cookies</Link>
                 <Link to="/cakes">Cakes</Link>
                 <Link to="/cupcakes">Cupcakes</Link>
+                <Link to="/cart">Cart</Link>
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
