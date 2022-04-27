@@ -3,15 +3,24 @@ import { axiosGet } from "../data";
 import { useState } from "react";
 import { Card, Button, Col, Row } from "react-bootstrap";
 import { useGlobalState } from "../components/GlobalState";
+import Cakes from "./cakes";
 
 export default function CartViewer() {
 
   //cart behavior
   const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
-  const addToCart = (product) => {
-    dispatch([cart.push(product)])
-  }
+  
+  const [menu, setMenu] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await axiosGet();
+      setMenu(response.results);
+      console.log({ response });
+    }
+    fetchData();
+  }, []);
 
   const sum = cart.map(item => item.starting_price).reduce((prev, curr) => prev + curr, 0);
 
@@ -22,6 +31,11 @@ export default function CartViewer() {
   function remove(e){
     console.log("to delete", e.target.id)
     dispatch(state.cart.splice(e.target.id, 1))
+  }
+
+  function addAnother(e){
+    console.log(e.target.id)
+    dispatch(state.cart.push(menu[e.target.id -1]))
   }
 
   return (
@@ -36,6 +50,7 @@ export default function CartViewer() {
               <Card.Text>
                 {item.starting_price}
                 <Button id={index} onClick={remove} variant="danger">Remove</Button>
+                <Button id={item.id} onClick={addAnother} variant="secondary">Add Another</Button>
               </Card.Text>
             </Card.Body>
           </Card>
