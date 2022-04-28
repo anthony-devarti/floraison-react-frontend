@@ -5,6 +5,7 @@ import { Button, Navbar, Offcanvas, Nav, Container, Row } from "react-bootstrap"
 import Tiles from "./components/Tiles";
 import { useState } from "react";
 import { useGlobalState } from "./components/GlobalState";
+import About from "./components/About";
 import "./App.css";
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
             </Link>
           </Navbar.Brand>
           <div>Logo</div>
+          <div className="right-nav">
             <Link to="/cart">
               <Button className="custom-buttons">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -62,10 +64,12 @@ function App() {
               </Nav>
             </Offcanvas.Body>
           </Navbar.Offcanvas>
+          </div>
         </Container>
       </Navbar>
-      <Tiles />
       <Outlet />
+      <Tiles />
+      <About />
     </div>
   );
 }

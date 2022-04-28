@@ -200,9 +200,17 @@ a {
     }
 }
 
-@media (min-width: 750px) {
+@media (max-width: 750px) {
     .mobile-screen {
-        display: none;
+        display: flex;
+        height: 100vh;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+    }
+
+    .mobile-background {
+        background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
     }
 }
 
@@ -257,7 +265,6 @@ a {
 
 .full-screen {
     height: 100vh;
-    vertical-align: sub;
 }
 
 .nav-strip {
@@ -269,4 +276,37 @@ a {
     width: 110vw;
     max-height: 25vh;
     display: flex
+}
+
+.about {
+    background-color: #8a99bf;
+    color: white;
+    text-align: center;
+    height: 100vh;
+}
+
+.icons {
+    justify-content: space-around;
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+}
+
+.nav-strips {
+    align-self: flex-end;
+}
+
+.right-nav {
+    display: flex;
+    flex-direction: flex-end;
+    flex-flow: row;
+    margin: .5rem;
 }

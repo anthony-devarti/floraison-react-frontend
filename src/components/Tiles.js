@@ -26,18 +26,20 @@ export default function Tiles() {
         </Row>
       </div>
       {/* The mobile version of this section */}
-      <div className="mobile-screen">
+      <div className="mobile-screen mobile-background">
         <div className="superheader">BLISS</div>
+        <div>
         <Row className="nav-strip" style={{backgroundColor:"#f26d85"}}>
           <Link to="/cakes">Cakes</Link>
-        </Row>
-        <Row className="nav-strip" style={{backgroundColor:"#72dbf2"}}>
-          <Link to="/cookies">Cookies</Link>
         </Row>
         <Row className="nav-strip" style={{backgroundColor:"#8a99bf"}}>
           <Link to="/cupcakes">Cupcakes</Link>
         </Row>
-      </div>
+        <Row className="nav-strip" style={{backgroundColor:"#72dbf2"}}>
+          <Link to="/cookies">Cookies</Link>
+        </Row>
+        </div>
+        </div>
     </>
   );
 }
