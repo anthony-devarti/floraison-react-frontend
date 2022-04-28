@@ -325,3 +325,32 @@ a {
     flex-flow: row;
     margin: .5rem;
 }
+
+.contact {
+    height: 100vh;
+    background-color: #72dbf2;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: center;
+}
+
+.descriptor {
+    color: white;
+    font-size: 1.5rem;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 5vh;
+}
+
+.form {
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.form-submit-button {
+    width: 70vw;
+    height: 5vh;
+    border-color: white !important;
+    border-width: 2pt !important;
+}
