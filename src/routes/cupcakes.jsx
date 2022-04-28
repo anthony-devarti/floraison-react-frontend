@@ -1,6 +1,7 @@
 import { Card, Button } from 'react-bootstrap'
 import { useState, useEffect } from 'react'
 import { axiosGet } from '../data'
+import { useGlobalState } from '../components/GlobalState';
 
 export default function Cupcakes() {
   const [cupcakeItems, setCupcakeItems] = useState([]);
@@ -15,6 +16,14 @@ export default function Cupcakes() {
     }
     fetchData();
   }, []);
+
+  //cart behavior
+  const [ state, dispatch ] = useGlobalState();
+  let cart = state.cart
+  const addToCart = (product) => {
+    dispatch([cart.push(product)])
+    localStorage.setItem("cart", JSON.stringify(state.cart))
+  }
 
   let cupcakes = cupcakeItems.filter( product => product.category===3 && product.published===true)
     return (

@@ -22,6 +22,8 @@ export default function CartViewer() {
     fetchData();
   }, []);
 
+  console.log("cart contents: ", cart)
+
   const sum = cart.map(item => item.starting_price).reduce((prev, curr) => prev + curr, 0);
 
   const tax = (sum*.06).toFixed(2)
@@ -36,6 +38,11 @@ export default function CartViewer() {
   function addAnother(e){
     console.log(e.target.id)
     dispatch(state.cart.push(menu[e.target.id -1]))
+  }
+
+  function clearCart(){
+    dispatch(state.cart = [])
+    localStorage.clear();
   }
 
   return (
@@ -68,7 +75,7 @@ export default function CartViewer() {
               </Col>
               <Col style={{ alignContent:"flex-end"}}>
               <Button className="custom-buttons">Checkout</Button>
-              <Button className="custom-buttons">Empty Cart</Button>
+              <Button onClick={clearCart} className="custom-buttons">Empty Cart</Button>
               </Col>
               </Row>
             </Card.Text>

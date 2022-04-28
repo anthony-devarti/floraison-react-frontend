@@ -1,12 +1,7 @@
-import React, {
-    createContext,
-    useReducer,
-    useContext,
-  } from 'react';
+import React, { createContext, useReducer, useContext, useEffect } from 'react';
   
-  const initialState = {
-    cart: []
-  }
+  const initialState = {cart: []} 
+  // || JSON.parsed(localStorage.getItem('cart'))
   
   const GlobalStateContext = createContext(initialState);
   const DispatchStateContext = createContext(undefined)
@@ -14,9 +9,9 @@ import React, {
   export const GlobalProvider = ({ children }) => {
     const [state, dispatch] = useReducer(
       (state, newValue) => ({ ...state, ...newValue }),
-      initialState
+      initialState,
     );
-  
+
     return (
       <GlobalStateContext.Provider value={state}>
         <DispatchStateContext.Provider value={dispatch}>

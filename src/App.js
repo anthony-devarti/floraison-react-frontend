@@ -9,10 +9,6 @@ import "./App.css";
 
 function App() {
   //Places to handle button behavior
-  function cartHandler() {
-    console.log("do cart stuff here");
-  }
-
   function loginHandler() {
     console.log("do login stuff here");
   }

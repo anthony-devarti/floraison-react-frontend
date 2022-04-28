@@ -25,6 +25,7 @@ export default function Cakes() {
   let cart = state.cart
   const addToCart = (product) => {
     dispatch([cart.push(product)])
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   return (
