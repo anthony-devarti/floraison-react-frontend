@@ -1,7 +1,14 @@
 import React, { createContext, useReducer, useContext, useEffect } from 'react';
   
-  const initialState = {cart: []} 
-  // || JSON.parsed(localStorage.getItem('cart'))
+//checks local storage for items in the cart and sets the starting cart value accordingly if it's there.  If it's null, it will set the starting cart value to an empty array.
+  const saved = localStorage.getItem('cart')
+  const initialValue = JSON.parse(saved)
+  const initialState = {
+    cart: saved ?  initialValue : []}
+
+  
+  // const initialState = initialValue || empty
+  // console.log(initialState)
   
   const GlobalStateContext = createContext(initialState);
   const DispatchStateContext = createContext(undefined)
@@ -11,6 +18,13 @@ import React, { createContext, useReducer, useContext, useEffect } from 'react';
       (state, newValue) => ({ ...state, ...newValue }),
       initialState,
     );
+
+
+  //this is causing too many rerenders.
+  // if (localStorage.getItem('cart') !== null) {
+  //   let storage = localStorage.getItem('cart')
+  //   dispatch(state.cart = JSON.parse(storage))
+  // }
 
     return (
       <GlobalStateContext.Provider value={state}>
