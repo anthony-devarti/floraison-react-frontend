@@ -84,12 +84,31 @@ a {
     align-items: center;
 }
 
-.tile {
+/* .tile {
+    z-index: 1;
+    background-size:cover;
     width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
     padding-bottom: 33vw;
     display: -moz-inline-grid;
     text-align: center;
+    color: transparent;
 }
+
+.tile:hover {
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+} */
 
 .cookies {
     background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png');
@@ -181,14 +200,15 @@ a {
     }
 }
 
-@media (max-width: 750px) {
+@media (min-width: 750px) {
     .mobile-screen {
-        display: block;
+        display: none;
     }
 }
 
 .tile-text {
-    padding-top: 50%;
+    padding-top: 30%;
+    /* font-size: 10vw; */
 }
 
 .offcanvas-body {

@@ -6,7 +6,7 @@ export default function Tiles() {
     <>
       {/* The desktop version of this section */}
       <div className="full-screen">
-        <div className="superheader">Follow your bliss</div>
+        <div className="superheader">FOLLOW YOUR BLISS</div>
         <Row className="tiles">
           <Col className="tile cakes">
             <div className="tile-text">
@@ -27,7 +27,7 @@ export default function Tiles() {
       </div>
       {/* The mobile version of this section */}
       <div className="mobile-screen">
-        <div className="superheader">Bliss</div>
+        <div className="superheader">BLISS</div>
         <Row className="nav-strip" style={{backgroundColor:"#f26d85"}}>
           <Link to="/cakes">Cakes</Link>
         </Row>
