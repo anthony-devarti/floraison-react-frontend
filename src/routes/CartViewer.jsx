@@ -3,7 +3,7 @@ import { axiosGet } from "../data";
 import { useState } from "react";
 import { Card, Button, Col, Row } from "react-bootstrap";
 import { useGlobalState } from "../components/GlobalState";
-import Cakes from "./cakes";
+import Paypal from "../components/Paypal";
 
 export default function CartViewer() {
 
@@ -75,6 +75,7 @@ export default function CartViewer() {
               </Col>
               <Col style={{ alignContent:"flex-end"}}>
               <Button className="custom-buttons">Checkout</Button>
+              <Paypal total={total} clearCart={clearCart}/>
               <Button onClick={clearCart} className="custom-buttons">Empty Cart</Button>
               </Col>
               </Row>
