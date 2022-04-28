@@ -26,7 +26,8 @@
     font-size: 30pt;
     font-family: 'Antonio', sans-serif;
     color: white;
-    padding: 1rem;
+    margin: 2rem;
+
 }
 
 .superheader {
@@ -34,7 +35,6 @@
     color: inherit;
     font-family: 'Antonio', sans-serif;
     text-align: center;
-    height: 100vh-33vw;
 }
 
 h1{
@@ -221,4 +221,9 @@ a {
 .card-image {
     height: "20rem";
     object-fit:"cover";
+}
+
+.full-screen {
+    height: 100vh;
+    vertical-align: sub;
 }

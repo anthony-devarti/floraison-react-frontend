@@ -21,6 +21,7 @@ export default function Cookies() {
   let cart = state.cart
   const addToCart = (product) => {
     dispatch([cart.push(product)])
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   let cookies = cookieItems.filter( product => product.category===2 && product.published===true)
