@@ -7,7 +7,8 @@ export default function Tiles() {
       {/* The desktop version of this section */}
       <div className="full-screen">
         <div className="superheader">FOLLOW YOUR BLISS</div>
-        <Row className="tiles">
+        <div>
+        <Row>
           <Col className="tile cakes">
             <div className="tile-text">
               <Link to="/cakes">Cakes</Link>
@@ -24,20 +25,29 @@ export default function Tiles() {
             </div>
           </Col>
         </Row>
+        </div>
       </div>
+
+
+
+
+
+
       {/* The mobile version of this section */}
-      <div className="mobile-screen">
+      <div className="mobile-screen mobile-background">
         <div className="superheader">BLISS</div>
+        <div>
         <Row className="nav-strip" style={{backgroundColor:"#f26d85"}}>
           <Link to="/cakes">Cakes</Link>
-        </Row>
-        <Row className="nav-strip" style={{backgroundColor:"#72dbf2"}}>
-          <Link to="/cookies">Cookies</Link>
         </Row>
         <Row className="nav-strip" style={{backgroundColor:"#8a99bf"}}>
           <Link to="/cupcakes">Cupcakes</Link>
         </Row>
-      </div>
+        <Row className="nav-strip" style={{backgroundColor:"#72dbf2"}}>
+          <Link to="/cookies">Cookies</Link>
+        </Row>
+        </div>
+        </div>
     </>
   );
 }
