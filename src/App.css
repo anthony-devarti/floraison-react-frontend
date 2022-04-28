@@ -175,6 +175,18 @@ a {
     display: -moz-inline-grid;
 }
 
+@media (max-width: 750px){
+    .full-screen {
+        display: none;
+    }
+}
+
+@media (max-width: 750px) {
+    .mobile-screen {
+        display: block;
+    }
+}
+
 .tile-text {
     padding-top: 50%;
 }
@@ -226,4 +238,15 @@ a {
 .full-screen {
     height: 100vh;
     vertical-align: sub;
+}
+
+.nav-strip {
+    z-index: 2;
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 110vw;
+    max-height: 25vh;
+    display: flex
 }
