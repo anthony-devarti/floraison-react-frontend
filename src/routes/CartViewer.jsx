@@ -33,11 +33,13 @@ export default function CartViewer() {
   function remove(e){
     console.log("to delete", e.target.id)
     dispatch(state.cart.splice(e.target.id, 1))
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   function addAnother(e){
     console.log(e.target.id)
     dispatch(state.cart.push(menu[e.target.id -1]))
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   function clearCart(){
