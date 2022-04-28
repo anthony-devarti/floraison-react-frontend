@@ -6,6 +6,7 @@ import Tiles from "./components/Tiles";
 import { useState } from "react";
 import { useGlobalState } from "./components/GlobalState";
 import About from "./components/About";
+import Contact from "./components/Contact";
 import "./App.css";
 
 function App() {
@@ -69,6 +70,7 @@ function App() {
       </Navbar>
       <Outlet />
       <Tiles />
+      <Contact />
       <About />
     </div>
   );
