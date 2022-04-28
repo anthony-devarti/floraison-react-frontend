@@ -26,7 +26,8 @@
     font-size: 30pt;
     font-family: 'Antonio', sans-serif;
     color: white;
-    margin: 2rem;
+    margin: 1rem;
+    max-height: fit-content;
 
 }
 
@@ -81,7 +82,7 @@ a {
 }
 
 .tiles {
-    align-items: center;
+    flex-flow: column;
 }
 
 /* .tile {
@@ -198,9 +199,7 @@ a {
     .full-screen {
         display: none;
     }
-}
 
-@media (max-width: 750px) {
     .mobile-screen {
         display: flex;
         height: 100vh;
@@ -211,6 +210,24 @@ a {
 
     .mobile-background {
         background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+    }
+
+}
+
+@media (min-width: 750px) {
+
+    .full-screen {
+        height: 100vh;
+        align-content: baseline;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        background-image: url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-size: cover;
+    }
+
+    .mobile-screen {
+        display: none;
     }
 }
 
@@ -263,9 +280,7 @@ a {
     object-fit:"cover";
 }
 
-.full-screen {
-    height: 100vh;
-}
+
 
 .nav-strip {
     z-index: 2;
