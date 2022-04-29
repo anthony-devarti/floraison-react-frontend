@@ -1,7 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio&family=Square+Peg&display=swap');
 
+.body {
+    scroll-snap-type: y mandatory;
+}
+
 .navigator {
-    background: linear-gradient(#72dbf2, #8a99bf 90% );
+    background-color: #72dbf2;
     position: relative;
     display: flex;
     flex-wrap: wrap;
@@ -23,17 +27,18 @@
 .custom-buttons {
     background: linear-gradient(15deg, #72d8f2, #f26d85);
     border: #8a99bf;
-    font-size: 30pt;
+    font-size: 2vw;
     font-family: 'Antonio', sans-serif;
     color: white;
     margin: 1rem;
     max-height: fit-content;
+    width: max-content;
 
 }
 
 .superheader {
-    font-size: 10rem;
-    color: inherit;
+    font-size: 15vw;
+    color: white;
     font-family: 'Antonio', sans-serif;
     text-align: center;
 }
@@ -84,32 +89,6 @@ a {
 .tiles {
     flex-flow: column;
 }
-
-/* .tile {
-    z-index: 1;
-    background-size:cover;
-    width: 33vw;
-    max-width: 33vw;
-    max-height: 33vw;
-    padding-bottom: 33vw;
-    display: -moz-inline-grid;
-    text-align: center;
-    color: transparent;
-}
-
-.tile:hover {
-    background-image: none;
-    z-index: 2;
-    text-align: center;
-    font-size: 8rem;
-    color: white;
-    font-family: 'Square Peg', cursive;
-    width: 35vw;
-    max-width: 35vw;
-    max-height: 33vw;
-    padding-bottom: 33vw;
-    display: -moz-inline-grid;
-} */
 
 .cookies {
     background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png');
@@ -202,7 +181,7 @@ a {
 
     .mobile-screen {
         display: flex;
-        height: 100vh;
+        height: 90vh;
         flex-direction: column;
         justify-content: space-between;
         color: white;
@@ -210,6 +189,7 @@ a {
 
     .mobile-background {
         background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+        background-size: cover;
     }
 
 }
@@ -217,8 +197,7 @@ a {
 @media (min-width: 750px) {
 
     .full-screen {
-        height: 100vh;
-        align-content: baseline;
+        height: 90vh;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -276,10 +255,9 @@ a {
 }
 
 .card-image {
-    height: "20rem";
-    object-fit:"cover";
+    height: 20rem;
+    object-fit: cover;
 }
-
 
 
 .nav-strip {
@@ -297,7 +275,7 @@ a {
     background-color: #8a99bf;
     color: white;
     text-align: center;
-    height: 100vh;
+    height: 90vh;
 }
 
 .icons {
@@ -327,17 +305,18 @@ a {
 }
 
 .contact {
-    height: 100vh;
+    height: 90vh;
     background-color: #72dbf2;
     align-content: center;
     align-items: center;
     justify-content: space-around;
     justify-items: center;
+    scroll-snap-align: start;
 }
 
 .descriptor {
     color: white;
-    font-size: 1.5rem;
+    font-size: 1rem;
     margin-left: 15vw;
     margin-right: 15vw;
     margin-top: 5vh;
@@ -353,4 +332,50 @@ a {
     height: 5vh;
     border-color: white !important;
     border-width: 2pt !important;
+}
+
+.product-cards {
+    width: 400px;
+    height: 70vh;
+    margin: 1rem
+}
+
+.product-page {
+    background-color: #8a99bf;
+}
+
+.products {
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+@media (max-width: 750px){
+    .contact-desktop {
+        display: none;
+    }
+
+    .contact-mobile {
+        display: flex;
+        height: 90vh;
+        flex-direction: column;
+        justify-content: space-around;
+        color: white;
+        background-color: #72dbf2;
+    }
+
+}
+
+@media (min-width: 750px) {
+
+    .contact-desktop {
+        height: 90vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .contact-mobile {
+        display: none;
+    }
 }

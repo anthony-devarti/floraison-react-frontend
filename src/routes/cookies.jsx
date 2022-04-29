@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { axiosGet } from "../data";
 import { Card, Button } from 'react-bootstrap'
 import { useGlobalState } from "../components/GlobalState";
+import CustomCookiePlatter from "../components/CustomCookiePlatter";
 
 export default function Cookies() {
 
@@ -26,14 +27,14 @@ export default function Cookies() {
 
   let cookies = cookieItems.filter( product => product.category===2 && product.published===true)
     return (
-        <main style={{ padding: "1rem 0" }}>
-          <h2>Cookies</h2>
+        <main className="product-page">
+          <div className="superheader">Cookies</div>
           <p>This is the Cookies page.</p>
           <div className="products">
             
               {cookies.map((cookie) => (
-               <Card key={cookie.name} border="dark" style={{ width: "18rem" }}>
-               <Card.Img src={cookie.photo} />
+               <Card key={cookie.name} border="dark" className="product-cards">
+               <Card.Img src={cookie.photo} className="card-image"/>
                <Card.Body>
                  <Card.Title>{cookie.name}</Card.Title>
                  <Card.Text>{cookie.description}</Card.Text>
@@ -49,6 +50,7 @@ export default function Cookies() {
             
             
           </div>
+          <CustomCookiePlatter />
         </main>
       );
   }

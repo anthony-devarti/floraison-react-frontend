@@ -29,13 +29,13 @@ export default function Cakes() {
   }
 
   return (
-    <main style={{ padding: "1rem 0" }}>
-      <h2>Cakes</h2>
-      <p>This is the cakes page.</p>
+    <main className="product-page">
+      <div className="superheader">Cakes</div>
+      <p>Whether it's for a party, a special event, or even just because you feel like having a cake for yourself, you're sure to find something perfect, here!</p>
       <div className="products">
         {cakes.map((cake) => (
-          <Card key={cake.name} border="dark" style={{ width: "18rem" }}>
-            <Card.Img src={cake.photo} />
+          <Card key={cake.name} border="dark" className="product-cards">
+            <Card.Img className="card-image" src={cake.photo} />
             <Card.Body>
               <Card.Title>{cake.name}</Card.Title>
               <Card.Text>{cake.description}</Card.Text>
@@ -43,7 +43,7 @@ export default function Cakes() {
                 <Button onClick={()=> addToCart(cake)} className="custom-buttons card-buttons">
                   Add to Cart
                 </Button>
-                <p style={{ textAlign: "right"}}>{cake.starting_price}</p>
+                <p style={{ textAlign: "right"}}>${cake.starting_price}</p>
               </Card.Footer>
             </Card.Body>
           </Card>

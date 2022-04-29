@@ -27,21 +27,21 @@ export default function Cupcakes() {
 
   let cupcakes = cupcakeItems.filter( product => product.category===3 && product.published===true)
     return (
-        <main style={{ padding: "1rem 0" }}>
-          <h2>Cupcakes</h2>
+        <main className='product-page'>
+          <div className='superheader'>Cupcakes</div>
           <p>This is the cupcakes page.</p>
           <div className="products">
             
               {cupcakes.map((cupcake) => (
-                <Card key={cupcake.name} border="dark" style={{ width: "18rem" }}>
-                <Card.Img variant="top" src={cupcake.photo} />
+                <Card key={cupcake.name} border="dark" className='product-cards'>
+                <Card.Img variant="top" src={cupcake.photo} className="card-image"/>
                 <Card.Body>
                   <Card.Title>{cupcake.name}</Card.Title>
                   <Card.Text>
                     {cupcake.description}
                     {cupcake.price}
                   </Card.Text>
-                  <Button variant="primary">Add to Cart</Button>
+                  <Button className="custom-buttons" variant="primary">Add to Cart</Button>
                 </Card.Body>
               </Card>
               ))}
