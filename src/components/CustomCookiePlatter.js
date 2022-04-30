@@ -20,10 +20,22 @@ export default function CustomCookiePlatter(cookieItems) {
   let cookies = cookieMenu;
 
   //setups to build the cookie platters
+
+  //sets the current size of the platters
   const [size, setSize] = useState(0);
+  //hands the contents of the tray around
   const [tray, setTray] = useState([]);
+  //keeps track of the price of the current tray
   const [price, setPrice] = useState(0);
+  //keeps track of the current number of cookies in the tray
   const [current, setCurrent] = useState(0);
+
+  //these handle conditional rendering of elements that will only appear under certain conditions.
+  //https://reactjs.org/docs/conditional-rendering.html
+  //shows or hides the cookie tracker
+  const [counterVisible, setCounterVisible] = useState(false);
+  //shows the button to add the current tray to the cart
+  const [addVisible, setAddVisible] = useState(false)
 
   function build(e) {
     console.log(e.target.id);
@@ -100,13 +112,12 @@ export default function CustomCookiePlatter(cookieItems) {
       //    does it have something to do with when the array length goes to 1 - Nope, the same issue is present when the array is longer.
       // add 4 of a cookie and delete 2 - second del seems to empty the tray
       //    I think there's something wrong with targeting the specific index of a cookie type.  Maybe the array is being mutated in some way?
-      let newTray = tray
+      //    it was.  I was setting the tray to only the items that were deleted, rather than the items that were not.  Kinda the opposite of what I wanted
+      let newTray = tray;
       newTray.splice(removed, 1);
-      console.log("new tray: ", newTray)
-      setTray([...newTray])
-      setPrice(price - mod)
-      setCurrent(tray.length)
-      console.log("current tray: ", tray)
+      setTray([...newTray]);
+      setPrice(price - mod);
+      setCurrent(tray.length);
     } else {
       alert("that cookie's not in there.")
     }
