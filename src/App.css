@@ -258,7 +258,11 @@ a {
     height: 20rem;
     object-fit: cover;
 }
-
+ /* This is just here to overwrite bootstrap */
+.card-img {
+    border-top-left-radius: 10% !important;
+    border-top-right-radius: 10% !important;
+}
 
 .nav-strip {
     z-index: 2;
@@ -446,4 +450,8 @@ a {
     bottom: 10rem;
     border-radius: 25%;
     font-size: 2.5rem !important;
+}
+
+.card{
+    border-radius: 10% !important;
 }
