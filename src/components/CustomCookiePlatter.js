@@ -80,8 +80,8 @@ export default function CustomCookiePlatter(cookieItems) {
   function removeCookie(e, type, mod) {
     console.log("cookie type targeted: ", type)
     if (tray.includes(type)) {
-      let removed = tray.indexOf(type);
-      let newTray = tray
+      let removed = ""
+      removed = tray.indexOf(type);
       //splice is not working as expected.  Testing to determine behavior:
       // add a cookie and delete it - works
       // add 2 of the same cookie and delete 1 - works
@@ -99,7 +99,10 @@ export default function CustomCookiePlatter(cookieItems) {
 
       //    does it have something to do with when the array length goes to 1 - Nope, the same issue is present when the array is longer.
       // add 4 of a cookie and delete 2 - second del seems to empty the tray
-      newTray = newTray.splice(removed, 1);
+      //    I think there's something wrong with targeting the specific index of a cookie type.  Maybe the array is being mutated in some way?
+      let newTray = tray
+      newTray.splice(removed, 1);
+      console.log("new tray: ", newTray)
       setTray([...newTray])
       setPrice(price - mod)
       setCurrent(tray.length)
