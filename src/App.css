@@ -379,3 +379,47 @@ a {
         display: none;
     }
 }
+.circle-button {
+    position: absolute;
+    border-radius: 50% !important;
+    bottom: -20px;
+    background-color: #f26d85 !important;
+    border-color: white !important;
+    border-width: 4px !important;
+}
+
+.cookie-clicker {
+    width: 25vw;
+    height: 25vw;
+    background-color: transparent !important;
+    border-color: white !important;
+    border-width: 4px !important;
+    color: white !important;
+    margin: 4rem;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 35% !important;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+
+.cookie-clicker-image {
+    position: absolute;
+    top: -10rem;
+    left: -10rem;
+    width: 100%;
+    height: auto;
+    max-width: 25vw;
+    max-height: auto;
+}
+
+/* This is just here for when I need to space two sections vertically without modifying their class css rules */
+.vertical-spacer{
+    height: 10vh
+}
+
+.cookie-tracker {
+    border-radius: 35%;
+}

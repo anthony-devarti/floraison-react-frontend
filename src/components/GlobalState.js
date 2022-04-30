@@ -19,13 +19,6 @@ import React, { createContext, useReducer, useContext, useEffect } from 'react';
       initialState,
     );
 
-
-  //this is causing too many rerenders.
-  // if (localStorage.getItem('cart') !== null) {
-  //   let storage = localStorage.getItem('cart')
-  //   dispatch(state.cart = JSON.parse(storage))
-  // }
-
     return (
       <GlobalStateContext.Provider value={state}>
         <DispatchStateContext.Provider value={dispatch}>

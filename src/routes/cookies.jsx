@@ -47,8 +47,8 @@ export default function Cookies() {
                </Card.Body>
              </Card>
               ))}
-            
-            
+        
+
           </div>
           <CustomCookiePlatter />
         </main>
