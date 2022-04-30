@@ -35,7 +35,20 @@ export default function CustomCookiePlatter(cookieItems) {
   //shows or hides the cookie tracker
   const [counterVisible, setCounterVisible] = useState(false);
   //shows the button to add the current tray to the cart
-  const [addVisible, setAddVisible] = useState(false)
+  const [addVisible, setAddVisible] = useState(false);
+
+  function FloatingTotal(){
+    if (counterVisible===true){
+      return(
+        <div className="floating-total">
+        <div>
+          {current}/{size}
+        </div>
+        <div>${price}</div>
+      </div>
+      )
+    }
+  }
 
   function build(e) {
     console.log(e.target.id);
@@ -61,6 +74,7 @@ export default function CustomCookiePlatter(cookieItems) {
         alert("Something went wrong.  Refresh the window and try again.");
         break;
     }
+    setCounterVisible(true)
     //launch a modal that contains all cookie options with a + and - button
     //adding a cookie should check the array length before adding the cookie type to the array.
     //if platter.length <= size
@@ -70,18 +84,17 @@ export default function CustomCookiePlatter(cookieItems) {
   }
   //handles the addition of cookies to the tray.  includes logic that requires the user to select a tray size first, then stops them if they try to add too many cookies.  These are all alerts right now, but they should probably show up as animated modals in the future since alerts are ugly af
   function addCookie(e, type, mod) {
-    //mod is still showing as undefined
     console.log("type: ", type, "mod: ", mod);
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
       alert("Choose a tray size, first.");
     } else if (tray.length < size) {
-      let newTray = tray
-      newTray.push(type)
+      let newTray = tray;
+      newTray.push(type);
       setTray([...newTray]);
-      setPrice(price + mod)
-      setCurrent(tray.length)
-      console.log("current tray: ", tray)
+      setPrice(price + mod);
+      setCurrent(tray.length);
+      console.log("current tray: ", tray);
     } else {
       //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
@@ -90,9 +103,9 @@ export default function CustomCookiePlatter(cookieItems) {
   }
 
   function removeCookie(e, type, mod) {
-    console.log("cookie type targeted: ", type)
+    console.log("cookie type targeted: ", type);
     if (tray.includes(type)) {
-      let removed = ""
+      let removed = "";
       removed = tray.indexOf(type);
       //splice is not working as expected.  Testing to determine behavior:
       // add a cookie and delete it - works
@@ -107,7 +120,7 @@ export default function CustomCookiePlatter(cookieItems) {
 
       //    issues with the second concurrent delete?
       // add 3 of a cookie and delete 2 - second del seems to empty the tray
-      // add 3 of cookie a, delete 2 of cookie a, add 1 of cookie b - the tray now has the expected cookies. 
+      // add 3 of cookie a, delete 2 of cookie a, add 1 of cookie b - the tray now has the expected cookies.
 
       //    does it have something to do with when the array length goes to 1 - Nope, the same issue is present when the array is longer.
       // add 4 of a cookie and delete 2 - second del seems to empty the tray
@@ -119,7 +132,7 @@ export default function CustomCookiePlatter(cookieItems) {
       setPrice(price - mod);
       setCurrent(tray.length);
     } else {
-      alert("that cookie's not in there.")
+      alert("that cookie's not in there.");
     }
   }
   //hard-coding these for now.  Maybe want to add in a method to loop through them to reduce repeated code.
@@ -215,12 +228,7 @@ export default function CustomCookiePlatter(cookieItems) {
           </Card>
         ))}
       </div>
-      <div className="floating-total">
-        <div>
-          {current}/{size}
-        </div>
-        <div>${price}</div>
-      </div>
+      <FloatingTotal />
     </>
   );
 }
