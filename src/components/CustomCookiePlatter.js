@@ -1,4 +1,3 @@
-import { buildQueries } from "@testing-library/react";
 import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { axiosGetCookies } from "../data";
@@ -6,28 +5,51 @@ import { useState, useEffect } from "react";
 
 export default function CustomCookiePlatter(cookieItems) {
   const cookieImage = process.env.PUBLIC_URL + "/images/cookieplatter.jpeg";
-  const overheadChocolate = process.env.PUBLIC_URL + "/public/images/chocolatechipoverhead.png";
+  const overheadChocolate =
+    process.env.PUBLIC_URL + "/public/images/chocolatechipoverhead.png";
 
   //this needs to make another api call.
   const [cookieMenu, setCookieMenu] = useState([]);
 
-  useEffect( () => {
+  useEffect(() => {
     async function fetchData() {
-      const response = await axiosGetCookies()
-      setCookieMenu(response.results)
+      const response = await axiosGetCookies();
+      setCookieMenu(response.results);
     }
     fetchData();
   }, []);
 
-  console.log("cookie menu: ", cookieMenu)
-  let cookies = cookieMenu
+  console.log("cookie menu: ", cookieMenu);
+  let cookies = cookieMenu;
 
   //setups to build the cookie platters
-  let size = 0;
-  let tray = [];
+  const [size, setSize] = useState(0);
+  const [tray, setTray] = useState([]);
+  const [price, setPrice] = useState(0);
+
   function build(e) {
-    size = e.target.id;
-    console.log(`Building a ${size} cookie platter.`);
+    console.log(e.target.id);
+    switch (true) {
+      case e.target.id == 12:
+        setPrice(13.99);
+        setSize(12);
+        break;
+      case e.target.id == 24:
+        setPrice(19.99);
+        setSize(24);
+        break;
+      case e.target.id == 36:
+        setPrice(26.99);
+        setSize(36);
+        break;
+      case e.target.id == 48:
+        setPrice(31.99);
+        setSize(48);
+        break;
+      default:
+        alert("Something went wrong.  Refresh the window and try again.");
+        break;
+    }
     //launch a modal that contains all cookie options with a + and - button
     //adding a cookie should check the array length before adding the cookie type to the array.
     //if platter.length <= size
@@ -40,10 +62,15 @@ export default function CustomCookiePlatter(cookieItems) {
     console.log(e.target.id);
     let type = e.target.id;
     if (!size) {
+      //prompt user to choose a tray size in a modal, instead
       alert("Choose a tray size, first.");
     } else if (tray.length < size) {
-      tray.push(type);
+      let newTray = tray
+      newTray.push(type)
+      setTray([...newTray]);
+      console.log("state tray length: ", tray.length)
     } else {
+      //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
     }
     console.log(tray);
@@ -118,12 +145,10 @@ export default function CustomCookiePlatter(cookieItems) {
           </Card.Body>
         </Card>
       </div>
-      
-      <div className="vertical-spacer">
 
-      </div>
+      <div className="vertical-spacer"></div>
 
-      <div className="products" >
+      <div className="products">
         {cookies.map((cookie) => (
           <Card key={cookie.name} className="cookie-clicker">
             <Card.Img className="cookie-clicker-image" src={cookie.image} />
@@ -149,23 +174,12 @@ export default function CustomCookiePlatter(cookieItems) {
           </Card>
         ))}
       </div>
+      <div className="floating-total">
+        <div>
+          {tray.length}/{size}
+        </div>
+        <div>${price}</div>
+      </div>
     </>
   );
 }
-
-{/* <Card key={cake.name} border="dark" className="product-cards">
-  <Card.Img className="card-image" src={cake.photo} />
-  <Card.Body>
-    <Card.Title>{cake.name}</Card.Title>
-    <Card.Text>{cake.description}</Card.Text>
-    <Card.Footer className="dan-schneider">
-      <Button
-        onClick={() => addToCart(cake)}
-        className="custom-buttons card-buttons"
-      >
-        Add to Cart
-      </Button>
-      <p style={{ textAlign: "right" }}>${cake.starting_price}</p>
-    </Card.Footer>
-  </Card.Body>
-</Card>; */}
