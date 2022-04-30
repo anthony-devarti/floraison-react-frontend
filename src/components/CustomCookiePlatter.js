@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button } from "react-bootstrap";
 import { axiosGetCookies } from "../data";
 import { useState, useEffect } from "react";
+import { useGlobalState } from "./GlobalState";
 
 export default function CustomCookiePlatter(cookieItems) {
   const cookieImage = process.env.PUBLIC_URL + "/images/cookieplatter.jpeg";
@@ -37,6 +38,8 @@ export default function CustomCookiePlatter(cookieItems) {
   //shows the button to add the current tray to the cart
   const [addVisible, setAddVisible] = useState(false);
 
+
+  //this is a component that is being conditionally rendered. It's probably not worth it to make it it's own file
   function FloatingTotal(){
     if (counterVisible===true){
       return(
@@ -49,6 +52,33 @@ export default function CustomCookiePlatter(cookieItems) {
       )
     }
   }
+  //cart behavior
+  const [ state, dispatch ] = useGlobalState();
+  let cart = state.cart
+  function handleAdd(size, price, tray){
+    let product = {
+      "name":size + "cookie platter",
+      "contents":tray,
+      "starting_price": price
+    }
+    console.log("product: ", product)
+    dispatch([cart.push(product)])
+    localStorage.setItem("cart", JSON.stringify(state.cart))
+    setTray([])
+    setAddVisible(false)
+    setCounterVisible(false)
+    //maybe a toast or something that says that the item has been added?
+    //right now everything just sort of disappears.
+  }
+
+  function AddButton(){
+    if (addVisible===true){
+      return(
+        <Button className="custom-buttons cond-checkout" onClick={() => handleAdd(size, price, tray)}>Add to Cart</Button> 
+    )}
+    }
+
+    /// end of cart behavior ///
 
   function build(e) {
     console.log(e.target.id);
@@ -94,7 +124,11 @@ export default function CustomCookiePlatter(cookieItems) {
       setTray([...newTray]);
       setPrice(price + mod);
       setCurrent(tray.length);
-      console.log("current tray: ", tray);
+      console.log("current: ", current, "size: ", size)
+      //weird because of the render
+      if(current===size-1){
+        setAddVisible(true)
+      }
     } else {
       //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
@@ -229,6 +263,7 @@ export default function CustomCookiePlatter(cookieItems) {
         ))}
       </div>
       <FloatingTotal />
+      <AddButton />
     </>
   );
 }

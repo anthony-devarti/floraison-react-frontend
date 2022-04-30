@@ -438,3 +438,12 @@ a {
     justify-items: center;
     align-items: center;
 }
+
+.cond-checkout {
+    width: 40vw;
+    height: 10vw;
+    position: sticky;
+    bottom: 10rem;
+    border-radius: 25%;
+    font-size: 2.5rem !important;
+}
