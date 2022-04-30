@@ -61,6 +61,10 @@ export default function CustomCookiePlatter(cookieItems) {
   function addCookie(e) {
     console.log(e.target.id);
     let type = e.target.id;
+    console.log(cookies)
+    //trying to get the mod value of the cookie added, then add that value to the price
+    // let mod = cookies.filter(cookie => cookie.name == type).mod
+    //console.log(mod)
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
       alert("Choose a tray size, first.");
@@ -68,7 +72,8 @@ export default function CustomCookiePlatter(cookieItems) {
       let newTray = tray
       newTray.push(type)
       setTray([...newTray]);
-      console.log("state tray length: ", tray.length)
+      //this is not working as expected
+      // setPrice(price + mod)
     } else {
       //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
@@ -158,6 +163,7 @@ export default function CustomCookiePlatter(cookieItems) {
             <div>Additional ${cookie.modifier}</div>
             <Button
               id={cookie.name}
+              data={cookie.mod}
               className="circle-button"
               style={{ right: "90px" }}
               onClick={removeCookie}
@@ -166,6 +172,7 @@ export default function CustomCookiePlatter(cookieItems) {
             </Button>
             <Button
               id={cookie.name}
+              data={cookie.mod}
               className="circle-button"
               style={{ right: "40px" }}
               onClick={addCookie}
