@@ -79,7 +79,8 @@ export default function CustomCookiePlatter(cookieItems) {
   function removeCookie(e) {
     if (tray.includes(e.target.id)) {
       let removed = tray.indexOf(e.target.id);
-      tray.splice(removed, 1);
+      let newTray = tray.splice(removed, 1);
+      setTray([...newTray])
       console.log(tray);
     }
   }
