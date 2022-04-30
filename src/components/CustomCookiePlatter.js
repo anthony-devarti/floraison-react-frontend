@@ -5,8 +5,6 @@ import { useState, useEffect } from "react";
 
 export default function CustomCookiePlatter(cookieItems) {
   const cookieImage = process.env.PUBLIC_URL + "/images/cookieplatter.jpeg";
-  const overheadChocolate =
-    process.env.PUBLIC_URL + "/public/images/chocolatechipoverhead.png";
 
   //this needs to make another api call.
   const [cookieMenu, setCookieMenu] = useState([]);
@@ -19,17 +17,18 @@ export default function CustomCookiePlatter(cookieItems) {
     fetchData();
   }, []);
 
-  console.log("cookie menu: ", cookieMenu);
   let cookies = cookieMenu;
 
   //setups to build the cookie platters
   const [size, setSize] = useState(0);
   const [tray, setTray] = useState([]);
   const [price, setPrice] = useState(0);
+  const [current, setCurrent] = useState(0);
 
   function build(e) {
     console.log(e.target.id);
     switch (true) {
+      //these are working with == and not ===.  probably e.target.id isn't the number, but a string of the number or something like that.
       case e.target.id == 12:
         setPrice(13.99);
         setSize(12);
@@ -58,13 +57,9 @@ export default function CustomCookiePlatter(cookieItems) {
     //show customer that another cookie cannot be added.
   }
   //handles the addition of cookies to the tray.  includes logic that requires the user to select a tray size first, then stops them if they try to add too many cookies.  These are all alerts right now, but they should probably show up as animated modals in the future since alerts are ugly af
-  function addCookie(e) {
-    console.log(e.target.id);
-    let type = e.target.id;
-    console.log(cookies)
-    //trying to get the mod value of the cookie added, then add that value to the price
-    // let mod = cookies.filter(cookie => cookie.name == type).mod
-    //console.log(mod)
+  function addCookie(e, type, mod) {
+    //mod is still showing as undefined
+    console.log("type: ", type, "mod: ", mod);
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
       alert("Choose a tray size, first.");
@@ -72,8 +67,9 @@ export default function CustomCookiePlatter(cookieItems) {
       let newTray = tray
       newTray.push(type)
       setTray([...newTray]);
-      //this is not working as expected
-      // setPrice(price + mod)
+      setPrice(price + mod)
+      setCurrent(tray.length)
+      console.log("current tray: ", tray)
     } else {
       //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
@@ -81,15 +77,38 @@ export default function CustomCookiePlatter(cookieItems) {
     console.log(tray);
   }
 
-  function removeCookie(e) {
-    if (tray.includes(e.target.id)) {
-      let removed = tray.indexOf(e.target.id);
-      let newTray = tray.splice(removed, 1);
+  function removeCookie(e, type, mod) {
+    console.log("cookie type targeted: ", type)
+    if (tray.includes(type)) {
+      let removed = tray.indexOf(type);
+      let newTray = tray
+      //splice is not working as expected.  Testing to determine behavior:
+      // add a cookie and delete it - works
+      // add 2 of the same cookie and delete 1 - works
+      // add 2 of cookie a, 1 of cookie b, then delete one of cookie a - works
+
+      // add 2 of cookie a, 1 of cookie b, then delete 2 of cookie a - fails on the second del by hitting the else statement of this function
+
+      // add 2 of cookie a, 1 of cookie b, then delete one of cookie b - works
+
+      // add 2 of cookie a, 1 of cookie b, then delete one of cookie b, then del 1 of cookie a - hits the else statement on second delete
+
+      //    issues with the second concurrent delete?
+      // add 3 of a cookie and delete 2 - second del seems to empty the tray
+      // add 3 of cookie a, delete 2 of cookie a, add 1 of cookie b - the tray now has the expected cookies. 
+
+      //    does it have something to do with when the array length goes to 1 - Nope, the same issue is present when the array is longer.
+      // add 4 of a cookie and delete 2 - second del seems to empty the tray
+      newTray = newTray.splice(removed, 1);
       setTray([...newTray])
-      console.log(tray);
+      setPrice(price - mod)
+      setCurrent(tray.length)
+      console.log("current tray: ", tray)
+    } else {
+      alert("that cookie's not in there.")
     }
   }
-
+  //hard-coding these for now.  Maybe want to add in a method to loop through them to reduce repeated code.
   return (
     <>
       <div className="superheader">Build Your Own</div>
@@ -166,7 +185,7 @@ export default function CustomCookiePlatter(cookieItems) {
               data={cookie.mod}
               className="circle-button"
               style={{ right: "90px" }}
-              onClick={removeCookie}
+              onClick={(e) => removeCookie(e, cookie.name, cookie.modifier)}
             >
               -
             </Button>
@@ -175,7 +194,7 @@ export default function CustomCookiePlatter(cookieItems) {
               data={cookie.mod}
               className="circle-button"
               style={{ right: "40px" }}
-              onClick={addCookie}
+              onClick={(e) => addCookie(e, cookie.name, cookie.modifier)}
             >
               +
             </Button>
@@ -184,7 +203,7 @@ export default function CustomCookiePlatter(cookieItems) {
       </div>
       <div className="floating-total">
         <div>
-          {tray.length}/{size}
+          {current}/{size}
         </div>
         <div>${price}</div>
       </div>
