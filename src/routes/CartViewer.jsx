@@ -33,11 +33,13 @@ export default function CartViewer() {
   function remove(e){
     console.log("to delete", e.target.id)
     dispatch(state.cart.splice(e.target.id, 1))
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   function addAnother(e){
     console.log(e.target.id)
     dispatch(state.cart.push(menu[e.target.id -1]))
+    localStorage.setItem("cart", JSON.stringify(state.cart))
   }
 
   function clearCart(){
@@ -51,13 +53,15 @@ export default function CartViewer() {
       <p>View the contents of your cart and checkout.</p>
       <div className="products">
         {cart.map((item, index) => (
-          <Card key={item.name+index} id={index} border="dark" style={{ width: "18rem" }}>
+          <Card key={item.name+index} id={index} border="dark" className="product-cards" style={{height:"auto"}}>
               <Card.Title>{item.name}</Card.Title>
             <Card.Body>
               <Card.Text>
-                {item.starting_price}
-                <Button id={index} onClick={remove} variant="danger">Remove</Button>
-                <Button id={item.id} onClick={addAnother} variant="secondary">Add Another</Button>
+                <div style={{position:"absolute", top:"4px", right:"4px"}}>${item.starting_price}</div>
+                <div style={{alignContent:"center", alignItems:"center", justifyContent:"r"}}>
+                <Button id={item.id} style={{margin:"4px"}} onClick={addAnother} variant="secondary">Add Another</Button>
+                <Button id={index} style={{margin:"4px"}} onClick={remove} variant="danger">Remove</Button>
+                </div>
               </Card.Text>
             </Card.Body>
           </Card>
@@ -74,7 +78,6 @@ export default function CartViewer() {
               Total: ${total}
               </Col>
               <Col style={{ alignContent:"flex-end"}}>
-              <Button className="custom-buttons">Checkout</Button>
               <Paypal total={total} clearCart={clearCart}/>
               <Button onClick={clearCart} className="custom-buttons">Empty Cart</Button>
               </Col>
