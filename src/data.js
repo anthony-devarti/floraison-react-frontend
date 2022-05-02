@@ -4,9 +4,9 @@ let testServerAPI = 'https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gi
 const testServerAPICookies = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/cookie_type/"
 const addOrderAPI = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/order_item/"
 
-//this may need to be changed when the remote server updates
+
 const instance = axios.create({
-  baseURL: 'https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/'
+  baseURL: "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/"
 })
 
 export async function axiosGet() {
@@ -32,13 +32,3 @@ export async function axiosPostOrder(itemObject) {
   axios.post(addOrderAPI[itemObject])
 }
 
-export async function axiosPlaceOrder(orderObject) {
-  // axiosPlaceOrder(JSON.stringify(orderObject))
-  axios.post('floraison/orders/', orderObject)
-  .then(function (response) {
-    console.log(response);
-  })
-  .catch(function (error) {
-    console.log(error);
-  });
-}

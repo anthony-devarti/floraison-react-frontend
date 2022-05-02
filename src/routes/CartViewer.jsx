@@ -71,20 +71,31 @@ export default function CartViewer() {
   //   axiosPostOrder(itemObject)
   // }
 
+  const [orderNumber, setOrderNumber] = useState(0)
 
-  function placeOrder(){
-    
-    //this order structure is known good and working in postman
+  //this should just send the cart to the order items endpoint
+  function placeOrder(total){
     const orderObject = 
-
     {
-      "total": 65,
+      "total": total,
       "paid": true,
       "completed": false,
       "due_date": null,
       "user": 1
   }
-    
+    axios.post('https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/orders/', orderObject)
+    .then(function (response) {
+      console.log(response)
+      //why am I having so much trouble storing the id into a variable right now?
+      //setting the order number to a state variable, then calling the setter in the line below leaves the state at default (same for response.data or response.data.id)
+      //declaring the order number in here scopes it to this function
+      //decalaring the order number above this, changes are not reflected when it is console logged at the bottom of the function
+      setOrderNumber(response.data.id)
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    console.log("orderNumber :", orderNumber)
   }
 
   return (
@@ -117,7 +128,7 @@ export default function CartViewer() {
               <Col style={{ alignContent:"flex-end"}}>
               {/* <Paypal total={total} clearCart={clearCart}/> */}
               <Button onClick={clearCart} className="custom-buttons">Empty Cart</Button>
-              <Button onClick={placeOrder} className="custom-buttons">Post tester</Button>
+              <Button onClick={() => placeOrder(total)} className="custom-buttons">Post tester</Button>
               </Col>
               </Row>
           </Card.Body>
