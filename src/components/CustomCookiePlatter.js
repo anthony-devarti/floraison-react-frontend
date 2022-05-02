@@ -61,7 +61,6 @@ export default function CustomCookiePlatter(cookieItems) {
       "contents":tray,
       "starting_price": price
     }
-    console.log("product: ", product)
     dispatch([cart.push(product)])
     localStorage.setItem("cart", JSON.stringify(state.cart))
     setTray([])
@@ -71,6 +70,7 @@ export default function CustomCookiePlatter(cookieItems) {
     //right now everything just sort of disappears.
   }
 
+  //the conditionally rendered add to cart button that should display when the tray is full and ready to be added to the cart as an item.
   function AddButton(){
     if (addVisible===true){
       return(
@@ -81,7 +81,10 @@ export default function CustomCookiePlatter(cookieItems) {
     /// end of cart behavior ///
 
   function build(e) {
-    console.log(e.target.id);
+    if (e.target.id < size){
+      alert("you have too many cookies to go down to a tray size this small")
+    }
+    setAddVisible(false)
     switch (true) {
       //these are working with == and not ===.  probably e.target.id isn't the number, but a string of the number or something like that.
       case e.target.id == 12:
@@ -114,9 +117,9 @@ export default function CustomCookiePlatter(cookieItems) {
   }
   //handles the addition of cookies to the tray.  includes logic that requires the user to select a tray size first, then stops them if they try to add too many cookies.  These are all alerts right now, but they should probably show up as animated modals in the future since alerts are ugly af
   function addCookie(e, type, mod) {
-    console.log("type: ", type, "mod: ", mod);
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
+//      Make sure to make e.target.id equal to the tray size no matter where it comes from or you'll have to rewrite the build function
       alert("Choose a tray size, first.");
     } else if (tray.length < size) {
       let newTray = tray;
@@ -124,7 +127,6 @@ export default function CustomCookiePlatter(cookieItems) {
       setTray([...newTray]);
       setPrice(price + mod);
       setCurrent(tray.length);
-      console.log("current: ", current, "size: ", size)
       //weird because of the render
       if(current===size-1){
         setAddVisible(true)
@@ -133,11 +135,10 @@ export default function CustomCookiePlatter(cookieItems) {
       //cute message in a modal suggesting they raise the tray size
       alert("too many cookies");
     }
-    console.log(tray);
+    // console.log(tray);
   }
 
   function removeCookie(e, type, mod) {
-    console.log("cookie type targeted: ", type);
     if (tray.includes(type)) {
       let removed = "";
       removed = tray.indexOf(type);
