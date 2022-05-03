@@ -40,11 +40,11 @@ export default function Tiles() {
         <Row className="nav-strip" style={{backgroundColor:"#f26d85"}}>
           <Link to="/cakes">Cakes</Link>
         </Row>
-        <Row className="nav-strip" style={{backgroundColor:"#8a99bf"}}>
-          <Link to="/cupcakes">Cupcakes</Link>
-        </Row>
         <Row className="nav-strip" style={{backgroundColor:"#72dbf2"}}>
           <Link to="/cookies">Cookies</Link>
+        </Row>
+        <Row className="nav-strip" style={{backgroundColor:"#8a99bf"}}>
+          <Link to="/cupcakes">Cupcakes</Link>
         </Row>
         </div>
         </div>
