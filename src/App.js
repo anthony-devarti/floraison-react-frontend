@@ -7,14 +7,8 @@ import {
   Offcanvas,
   Nav,
   Container,
-  Row,
 } from "react-bootstrap";
-import Tiles from "./components/Tiles";
-import { useState } from "react";
 import { useGlobalState } from "./components/GlobalState";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Home from "./routes/home";
 import "./App.css";
 
 function App() {
@@ -82,7 +76,6 @@ function App() {
           </Container>
         </Navbar>
         <Outlet />
-
       </div>
     </div>
   );

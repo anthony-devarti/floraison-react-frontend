@@ -18,7 +18,7 @@ root.render(
   <GlobalProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<App />}>
+        <Route path="/" element={<><App /><Home /></>}>
           <Route path="home" element={<Home />} />
           <Route path="cookies" element={<Cookies />} />
           <Route path="cakes" element={<Cakes />} />
