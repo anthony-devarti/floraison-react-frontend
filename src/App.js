@@ -14,6 +14,7 @@ import { useState } from "react";
 import { useGlobalState } from "./components/GlobalState";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Home from "./routes/home";
 import "./App.css";
 
 function App() {
@@ -32,7 +33,7 @@ function App() {
         <Navbar sticky="top" className="navigator" expand={false}>
           <Container fluid>
             <Navbar.Brand>
-              <Link to="/">
+              <Link to="/home">
                 <h1>LA FLORAISON</h1>
               </Link>
             </Navbar.Brand>
@@ -69,7 +70,7 @@ function App() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3 hamburger">
-                    <Link to="/">Home</Link>
+                    <Link to="/home">Home</Link>
                     <Link to="/cookies">Cookies</Link>
                     <Link to="/cakes">Cakes</Link>
                     <Link to="/cupcakes">Cupcakes</Link>
@@ -81,9 +82,7 @@ function App() {
           </Container>
         </Navbar>
         <Outlet />
-        <Tiles />
-        <Contact />
-        <About />
+
       </div>
     </div>
   );
