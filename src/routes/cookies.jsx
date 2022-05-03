@@ -20,9 +20,9 @@ export default function Cookies() {
   //cart behavior
   const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
-  
-  const addToCart = ({id, starting_price}) => {
-    const item = {id, unit_price:starting_price, message:null, special_instructions:null}
+
+  const addToCart = ({id, starting_price, name}) => {
+    const item = {name, id, unit_price:starting_price, message:null, special_instructions:null}
     dispatch([cart.push(item)])
     localStorage.setItem("cart", JSON.stringify(state.cart))
     console.log(cart)
