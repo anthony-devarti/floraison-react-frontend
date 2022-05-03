@@ -20,9 +20,12 @@ export default function Cupcakes() {
   //cart behavior
   const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
-  const addToCart = (product) => {
-    dispatch([cart.push(product)])
+
+  const addToCart = ({id, starting_price}) => {
+    const item = {id, unit_price:starting_price, message:null, special_instructions:null}
+    dispatch([cart.push(item)])
     localStorage.setItem("cart", JSON.stringify(state.cart))
+    console.log(cart)
   }
 
   let cupcakes = cupcakeItems.filter( product => product.category===3 && product.published===true)
@@ -41,7 +44,7 @@ export default function Cupcakes() {
                     {cupcake.description}
                     {cupcake.price}
                   </Card.Text>
-                  <Button className="custom-buttons" variant="primary">Add to Cart</Button>
+                  <Button onClick={()=> addToCart(cupcake)} className="custom-buttons" variant="primary">Add to Cart</Button>
                 </Card.Body>
               </Card>
               ))}
