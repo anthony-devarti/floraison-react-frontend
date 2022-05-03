@@ -10,6 +10,7 @@ import CartViewer from "./routes/CartViewer"
 import { GlobalProvider } from "./components/GlobalState";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./routes/home";
+import Profile from "./routes/profile";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 //https://reactrouter.com/docs/en/v6/getting-started/tutorial
@@ -18,12 +19,13 @@ root.render(
   <GlobalProvider>
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<><App /><Home /></>}>
-          <Route path="home" element={<Home />} />
+        <Route path="/" element={<App />}>
+          <Route path="/home" element={<Home />} />
           <Route path="cookies" element={<Cookies />} />
           <Route path="cakes" element={<Cakes />} />
           <Route path="cupcakes" element={<Cupcakes />} />
           <Route path="cart" element={<CartViewer />} />
+          <Route path="profile" element={<Profile />} />
         </Route>
       </Routes>
     </BrowserRouter>
