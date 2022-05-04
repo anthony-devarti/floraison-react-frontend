@@ -27,7 +27,7 @@ export default function CartViewer() {
 
   //handling cart total behavior estimating tax etc.
   const sum = cart
-    .map((item) => item.unit_price)
+    .map((item) => item.unit_price || item.starting_price)
     .reduce((prev, curr) => prev + curr, 0);
 
   const tax = (parseFloat(sum) * 0.06).toFixed(2);
@@ -55,7 +55,7 @@ export default function CartViewer() {
     setOldCart([...cart])
     setOldTotal(total)
     dispatch((state.cart = []));
-    localStorage.clear();
+    localStorage.setItem("cart", []);
   }
 
 
@@ -162,7 +162,7 @@ export default function CartViewer() {
             <Card.Title>{item.name}</Card.Title>
             <Card.Body>
               <div style={{ position: "absolute", top: "4px", right: "4px" }}>
-                ${item.unit_price}
+                ${item.unit_price||item.starting_price}
               </div>
               <div
                 style={{
