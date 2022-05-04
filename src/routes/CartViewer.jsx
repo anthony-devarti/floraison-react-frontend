@@ -114,7 +114,7 @@ export default function CartViewer() {
     const orderObject = {
       "total": total,
       "paid": true,
-      "user": 1,
+      "user": state.currentUser.user_id,
       "order_items": cart,
     };
     axios
