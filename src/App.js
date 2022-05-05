@@ -32,7 +32,7 @@ function App() {
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Login />
+            <Login handleClose={handleClose}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleClose}>
