@@ -1,7 +1,6 @@
 import React from "react";
-import ReactDOM from "react-dom/client";
+import ReactDOM from "react-dom";
 import App from "./App";
-import { render } from "react-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Cookies from "./routes/cookies";
 import Cakes from "./routes/cakes";
@@ -12,10 +11,9 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./routes/home";
 import Profile from "./routes/profile";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
 //https://reactrouter.com/docs/en/v6/getting-started/tutorial
 //used this to get the default routes set up.
-root.render(
+ReactDOM.render(
   <GlobalProvider>
     <BrowserRouter>
       <Routes>
@@ -29,5 +27,6 @@ root.render(
         </Route>
       </Routes>
     </BrowserRouter>
-  </GlobalProvider>
+  </GlobalProvider>,
+  document.getElementById('root')
 );

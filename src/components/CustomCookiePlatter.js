@@ -50,6 +50,8 @@ export default function CustomCookiePlatter(cookieItems) {
         <div>${price}</div>
       </div>
       )
+    } else {
+      return null
     }
   }
   //cart behavior
@@ -75,7 +77,9 @@ export default function CustomCookiePlatter(cookieItems) {
     if (addVisible===true){
       return(
         <Button className="custom-buttons cond-checkout" onClick={() => handleAdd(size, price, tray)}>Add to Cart</Button> 
-    )}
+    )} else {
+      return null
+    }
     }
 
     /// end of cart behavior ///
@@ -83,7 +87,7 @@ export default function CustomCookiePlatter(cookieItems) {
   function build(e) {
     if (e.target.id < size){
       alert("you have too many cookies to go down to a tray size this small")
-    }
+    } else {
     setAddVisible(false)
     switch (true) {
       //these are working with == and not ===.  probably e.target.id isn't the number, but a string of the number or something like that.
@@ -106,7 +110,7 @@ export default function CustomCookiePlatter(cookieItems) {
       default:
         alert("Something went wrong.  Refresh the window and try again.");
         break;
-    }
+    }}
     setCounterVisible(true)
     //launch a modal that contains all cookie options with a + and - button
     //adding a cookie should check the array length before adding the cookie type to the array.
