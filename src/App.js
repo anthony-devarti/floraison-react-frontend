@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router";
 import {
   Button,
@@ -15,33 +15,46 @@ import Login from "./components/Login";
 
 function App() {
   //Places to handle button behavior
-const [show, setShow] = useState(false)
-const handleClose = () => setShow(false)
-const handleShow = () => setShow(true)
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  let navigate = useNavigate();
+
   function LoginHandler() {
     console.log("do login stuff here");
     //this is grabbing this info in a weird way right now.
     // it's grabbing all of the info and showing the current
 
-    if (show==true){
+    if (show == true) {
       return (
         <Modal className="floraison-modal" show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Login</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Login />
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      )
+          <Modal.Header closeButton>
+            <Modal.Title>Login</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <Login />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      );
     }
   }
-  
+
+  function UserButton() {
+    if (state.currentUser) {
+      return <Button className="custom-buttons" onClick={() => navigate('/profile')}>Profile</Button>;
+    } else {
+      return (
+        <Button className="custom-buttons" onClick={handleShow}>
+          Login
+        </Button>
+      );
+    }
+  }
 
   //handles the cart behavior
   const [state, dispatch] = useGlobalState();
@@ -70,10 +83,8 @@ const handleShow = () => setShow(true)
                   ( {cart.length} )
                 </Button>
               </Link>
-              <Button className="custom-buttons" onClick={handleShow}>
-                Login
-              </Button>
-              
+              <UserButton />
+
               <Navbar.Toggle aria-controls="offcanvasNavbar" />
               <Navbar.Offcanvas
                 id="offcanvasNavbar"

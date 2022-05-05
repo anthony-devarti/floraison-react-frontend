@@ -25,6 +25,7 @@ const Profile = () => {
   
   function logoutHandler() {
     localStorage.removeItem("user");
+    dispatch[state.currentUser=null]
     navigate("/home")
   }
 
