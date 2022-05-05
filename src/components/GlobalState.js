@@ -3,11 +3,15 @@ import jwtDecode from 'jwt-decode'
   
 //checks local storage for items in the cart and sets the starting cart value accordingly if it's there.  If it's null, it will set the starting cart value to an empty array.
   const saved = localStorage.getItem('cart')
-  const startCart = JSON.parse(saved)
+  //had to change this because the clear cart had to change when other things ended up in global storage.
+  let startCart=[]
+  if (saved){
+    startCart = JSON.parse(saved)
+  }
 
 let user = JSON.parse(localStorage.getItem('user'))
   const initialState = {
-    cart: saved ?  startCart : [],
+    cart: startCart,
     currentUser: user ? jwtDecode(user.access) : null,
     currentUserToken: user ? user.access : null
     }
@@ -24,10 +28,6 @@ let user = JSON.parse(localStorage.getItem('user'))
       (state, newValue) => ({ ...state, ...newValue }),
       initialState,
     );
-
-
-
-
 
 
     return (
