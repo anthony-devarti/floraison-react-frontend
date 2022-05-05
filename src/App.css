@@ -464,3 +464,10 @@ a {
 .card{
     border-radius: 10% !important;
 }
+
+.modal-content{
+    background: linear-gradient(15deg, #72d8f2, #f26d85);
+    border: #8a99bf;
+    color: white;
+    font-family: 'Antonio', sans-serif;
+}
