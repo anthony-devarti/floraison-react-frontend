@@ -5,6 +5,7 @@ const testServerAPICookies = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.w
 const addOrderAPI = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/order_item/"
 
 
+
 const instance = axios.create({
   baseURL: "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/"
 })
@@ -14,6 +15,13 @@ export async function axiosGet() {
     .get(testServerAPI)
     .then((response) => response.data);
 }
+
+export async function axiosGetOrdersByUserId(id) {
+  return axios
+    .get(`https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/Orders/?id=&user=${id}`)
+    .then((response) => response.data);
+}
+
 
 export async function axiosGetCookies() {
   return axios

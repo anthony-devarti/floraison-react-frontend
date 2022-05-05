@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router";
 import {
@@ -7,15 +7,41 @@ import {
   Offcanvas,
   Nav,
   Container,
+  Modal,
 } from "react-bootstrap";
 import { useGlobalState } from "./components/GlobalState";
 import "./App.css";
+import Login from "./components/Login";
 
 function App() {
   //Places to handle button behavior
-  function loginHandler() {
+const [show, setShow] = useState(false)
+const handleClose = () => setShow(false)
+const handleShow = () => setShow(true)
+  function LoginHandler() {
     console.log("do login stuff here");
+    //this is grabbing this info in a weird way right now.
+    // it's grabbing all of the info and showing the current
+
+    if (show==true){
+      return (
+        <Modal className="floraison-modal" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Login</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          <Login />
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+      )
+    }
   }
+  
 
   //handles the cart behavior
   const [state, dispatch] = useGlobalState();
@@ -44,10 +70,10 @@ function App() {
                   ( {cart.length} )
                 </Button>
               </Link>
-              <Button className="custom-buttons" onClick={loginHandler}>
+              <Button className="custom-buttons" onClick={handleShow}>
                 Login
               </Button>
-
+              
               <Navbar.Toggle aria-controls="offcanvasNavbar" />
               <Navbar.Offcanvas
                 id="offcanvasNavbar"
@@ -69,12 +95,14 @@ function App() {
                     <Link to="/cakes">Cakes</Link>
                     <Link to="/cupcakes">Cupcakes</Link>
                     <Link to="/cart">Cart</Link>
+                    <Link to="/profile">Profile</Link>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </div>
           </Container>
         </Navbar>
+        <LoginHandler />
         <Outlet />
       </div>
     </div>
