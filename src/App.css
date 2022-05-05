@@ -202,8 +202,16 @@ a {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        background-image: url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-color: #b4fefb;
         background-size: cover;
+    }
+
+    .imagefield {
+        background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh;
     }
 
     .mobile-screen {

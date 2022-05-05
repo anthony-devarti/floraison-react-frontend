@@ -3,6 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { axiosGetCookies } from "../data";
 import { useState, useEffect } from "react";
 import { useGlobalState } from "./GlobalState";
+import { Modal } from "react-bootstrap";
 
 export default function CustomCookiePlatter(cookieItems) {
   const cookieImage = process.env.PUBLIC_URL + "/images/cookieplatter.jpeg";
@@ -80,9 +81,57 @@ export default function CustomCookiePlatter(cookieItems) {
 
     /// end of cart behavior ///
 
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  const [modalVersion, setModalVersion] = useState('small')
+  const [title, setTitle] = useState('Nothing yet')
+  const [message, setMessage] = useState('Nothing')
+
+  function CookieModal(){
+    
+    if (show == true) {
+      useEffect(() => {
+      if (modalVersion == 'small'){
+        setTitle("We're gonna need a bigger tray!")
+        setMessage("You have too many cookies to switch to a tray this small!")
+      } else if (modalVersion == 'err'){
+        setTitle("Error")
+        setMessage("Something went wrong.  Refresh the window and try again.")
+      } else if (modalVersion == 'notray'){
+        setTitle("You don't have a tray!")
+        setMessage("Choose a tray size first, then add some cookies.")
+      } else if (modalVersion== 'big'){
+        setTitle("Too many cookies!")
+        setMessage("You're trying to add more cookies than this tray can hold.")
+      } else if (modalVersion=='cookie404'){
+        setTitle("What cookie?")
+        setMessage("The cookie you're trying to remove isn't on this tray")
+      }
+      },[])
+      return (
+        <Modal className="floraison-modal" show={show} onHide={handleClose}>
+          <Modal.Header closeButton>
+            <Modal.Title>{title}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            {message}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      );
+    }
+  }
+  
+
   function build(e) {
     if (e.target.id < size){
-      alert("you have too many cookies to go down to a tray size this small")
+      setModalVersion('small')
+      handleShow()
     }
     setAddVisible(false)
     switch (true) {
@@ -120,7 +169,8 @@ export default function CustomCookiePlatter(cookieItems) {
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
 //      Make sure to make e.target.id equal to the tray size no matter where it comes from or you'll have to rewrite the build function
-      alert("Choose a tray size, first.");
+      setModalVersion('notray')
+      handleShow()
     } else if (tray.length < size) {
       let newTray = tray;
       newTray.push(type);
@@ -133,7 +183,9 @@ export default function CustomCookiePlatter(cookieItems) {
       }
     } else {
       //cute message in a modal suggesting they raise the tray size
-      alert("too many cookies");
+      setModalVersion('big')
+      handleShow()
+      // alert("too many cookies");
     }
     // console.log(tray);
   }
@@ -167,7 +219,8 @@ export default function CustomCookiePlatter(cookieItems) {
       setPrice(price - mod);
       setCurrent(tray.length);
     } else {
-      alert("that cookie's not in there.");
+      setModalVersion('cookie404');
+      handleShow()
     }
   }
   //hard-coding these for now.  Maybe want to add in a method to loop through them to reduce repeated code.
@@ -265,6 +318,7 @@ export default function CustomCookiePlatter(cookieItems) {
       </div>
       <FloatingTotal />
       <AddButton />
+      <CookieModal />
     </>
   );
 }
