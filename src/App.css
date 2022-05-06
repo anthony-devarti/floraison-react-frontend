@@ -42,6 +42,8 @@
     color: white;
     font-family: 'Antonio', sans-serif;
     text-align: center;
+    padding-top: 4rem;
+    text-shadow: 3px 3px 2px #000;
 }
 
 h1{
@@ -193,6 +195,10 @@ a {
         background-size: cover;
     }
 
+    .logo {
+        display: none;
+    }
+
 }
 
 @media (min-width: 750px) {
@@ -217,6 +223,10 @@ a {
 
     .mobile-screen {
         display: none;
+    }
+
+    .logo {
+        display: flex
     }
 }
 
@@ -474,10 +484,3 @@ a {
     font-family: 'Antonio', sans-serif;
 }
 
-/* .snapper {
-    position: relative;
-}
-
-.snapper > * {
-    position: relative;
-} */

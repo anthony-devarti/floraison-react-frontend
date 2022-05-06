@@ -70,7 +70,7 @@ function App() {
                 <h1>LA FLORAISON</h1>
               </Link>
             </Navbar.Brand>
-            <div>Logo</div>
+            <div className="logo">Logo</div>
             <div className="right-nav">
               <Link to="/cart">
                 <Button className="custom-buttons">
