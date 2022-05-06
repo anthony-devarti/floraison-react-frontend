@@ -204,6 +204,7 @@ a {
         flex-direction: column;
         background-color: #b4fefb;
         background-size: cover;
+        padding-top: 5vh;
     }
 
     .imagefield {
@@ -325,6 +326,7 @@ a {
     justify-content: space-around;
     justify-items: center;
     scroll-snap-align: start;
+    padding-top: 5vh;
 }
 
 .descriptor {
@@ -471,3 +473,11 @@ a {
     color: white;
     font-family: 'Antonio', sans-serif;
 }
+
+/* .snapper {
+    position: relative;
+}
+
+.snapper > * {
+    position: relative;
+} */

@@ -8,10 +8,10 @@ export default function Paypal(total, clearCart) {
 
     const [ state, dispatch ] = useGlobalState();
 
-    function clearCart(){
-        dispatch(state.cart = [])
-        localStorage.clear();
-    }
+    // function clearCart(){
+    //     dispatch(state.cart = [])
+    //     localStorage.clear();
+    // }
 
     return (
         <PayPalScriptProvider options={{ "client-id": "test" }}>
