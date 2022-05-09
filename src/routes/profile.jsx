@@ -50,7 +50,7 @@ const Profile = () => {
         <div className="subheader">
           <h1>Hey there, {firstName}</h1>
           <h2>Welcome back! What are we looking to do today?</h2>
-          <div classname="action-buttons">
+          <div className="action-buttons">
             <Button className="custom-buttons" href="#past-orders"> Recent Orders</Button>
             <Button onClick={() => stateChecker()}>View State</Button>
             <Button className="custom-buttons" onClick={logoutHandler}>
