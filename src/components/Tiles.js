@@ -6,7 +6,9 @@ export default function Tiles() {
     <>
       {/* The desktop version of this section */}
       <div className="full-screen">
+        <div className="imagefield">
         <div className="superheader">FOLLOW YOUR BLISS</div>
+        </div>
         <div>
         <Row>
           <Col className="tile cakes">

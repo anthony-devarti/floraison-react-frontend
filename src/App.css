@@ -3,6 +3,7 @@
 .body {
     scroll-snap-type: y mandatory;
     background-color: #8a99bf;
+    padding-bottom: 40px;
 }
 
 .navigator {
@@ -27,10 +28,11 @@
 
 .custom-buttons {
     background: linear-gradient(15deg, #72d8f2, #f26d85);
+    text-shadow: 3px 3px 2px #000;
     border: #8a99bf;
     font-size: 2vw;
     font-family: 'Antonio', sans-serif;
-    color: white;
+    color: white!important;
     margin: 1rem;
     max-height: fit-content;
     width: max-content;
@@ -42,6 +44,8 @@
     color: white;
     font-family: 'Antonio', sans-serif;
     text-align: center;
+    padding-top: 4rem;
+    text-shadow: 3px 3px 2px #000;
 }
 
 h1{
@@ -193,6 +197,10 @@ a {
         background-size: cover;
     }
 
+    .logo {
+        display: none;
+    }
+
 }
 
 @media (min-width: 750px) {
@@ -202,12 +210,25 @@ a {
         display: flex;
         justify-content: space-between;
         flex-direction: column;
-        background-image: url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-color: #b4fefb;
         background-size: cover;
+        padding-top: 5vh;
+    }
+
+    .imagefield {
+        background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh;
     }
 
     .mobile-screen {
         display: none;
+    }
+
+    .logo {
+        display: flex
     }
 }
 
@@ -246,13 +267,14 @@ a {
 
 .dan-schneider {
     align-content: space-around;
-    height: min-content;
+    height: max-content;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .card-buttons {
-    position: absolute;
-    bottom: 8px;
-    left: 8px;
+    position: relative;
 }
 
 .card-image {
@@ -317,6 +339,7 @@ a {
     justify-content: space-around;
     justify-items: center;
     scroll-snap-align: start;
+    padding-top: 5vh;
 }
 
 .descriptor {
@@ -455,4 +478,46 @@ a {
 
 .card{
     border-radius: 10% !important;
+}
+
+.modal-content{
+    background: linear-gradient(15deg, #72d8f2, #f26d85);
+    border: #8a99bf;
+    color: white;
+    font-family: 'Antonio', sans-serif;
+}
+
+.past-orders {
+    background-color: #ffffff60!important;
+    border-color: white;
+    border: 4px solid white!important;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    width: 30vh;
+    overflow-y: scroll;
+    border-top-right-radius: 0!important;
+    border-bottom-left-radius: -0!important;
+}
+
+.profile{
+    background-color: #8a99bf;
+    padding-bottom: 100px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.subheader{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+    justify-content: space-around;
 }

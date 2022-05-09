@@ -49,73 +49,68 @@ export default function CartViewer() {
   }
 
   //the user option to clear the cart, also is called when the order is completed and the cart needs to be emptied
-  const [oldCart, setOldCart] = useState([])
-  const [oldTotal, setOldTotal] = useState(0)
+  const [oldCart, setOldCart] = useState([]);
+  const [oldTotal, setOldTotal] = useState(0);
   function clearCart() {
-    setOldCart([...cart])
-    setOldTotal(total)
+    setOldCart([...cart]);
+    setOldTotal(total);
     dispatch((state.cart = []));
     localStorage.setItem("cart", []);
   }
 
-
   //the modal that appears when an order is completed
-  const [show, setShow] = useState(false)
-  const handleClose = () => setShow(false)
-  const handleShow = () => setShow(true)
-  function ConfirmationModal(){
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  function ConfirmationModal() {
     //this is grabbing this info in a weird way right now.
-    // it's grabbing all of the info and showing the current 
-    console.log("old cart: ", oldCart)
-    console.log("old total:", oldTotal)
+    // it's grabbing all of the info and showing the current
+    console.log("old cart: ", oldCart);
+    console.log("old total:", oldTotal);
 
-    if (show==true){
+    if (show == true) {
       return (
         <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Thanks for your purchase!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          Order Number: {currentId}
-          <ul>
-        {oldCart.map((item, index) => (
-          <li
-            key={item.name + index}
-            id={index}
-            border="dark"
-            className="product-cards"
-            style={{ height: "auto" }}
-          >
-            {item.name}
-            
-              <div>
-                ${item.unit_price}
-              </div>
-              
-            
-          </li>
-        ))}
-      </ul>
-      Total: {oldTotal}
-        </Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-        </Modal.Footer>
-      </Modal>
-      )
+          <Modal.Header closeButton>
+            <Modal.Title>Thanks for your purchase!</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            Order Number: {currentId}
+            <ul>
+              {oldCart.map((item, index) => (
+                <li
+                  key={item.name + index}
+                  id={index}
+                  border="dark"
+                  className="product-cards"
+                  style={{ height: "auto" }}
+                >
+                  {item.name}
+
+                  <div>${item.unit_price}</div>
+                </li>
+              ))}
+            </ul>
+            Total: {oldTotal}
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleClose}>
+              Close
+            </Button>
+          </Modal.Footer>
+        </Modal>
+      );
     }
   }
 
   //this should just send the cart to the order items endpoint
-  const [currentId, setCurrentId] = useState(0)
+  const [currentId, setCurrentId] = useState(0);
   function placeOrder(total) {
     const orderObject = {
-      "total": total,
-      "paid": true,
-      "user": state.currentUser.user_id,
-      "order_items": cart,
+      total: total,
+      paid: true,
+      user: state.currentUser.user_id,
+      order_items: cart,
     };
     axios
       .post(
@@ -125,26 +120,23 @@ export default function CartViewer() {
       //need to save response.data to a variable
       .then(function (response) {
         console.log(response);
-        setCurrentId(response.data)
+        setCurrentId(response.data);
       })
       .catch(function (error) {
         console.log(error);
       });
 
+    // need to get the order details:
+    // order Number
+    // order items :done
+    // order total :done
 
-      // need to get the order details:
-      // order Number 
-      // order items :done
-      // order total :done
-      
-      //generate a modal that includes all of the above information as well as:
-      // static thank you message :done
-      // close button :done
+    //generate a modal that includes all of the above information as well as:
+    // static thank you message :done
+    // close button :done
     clearCart();
-    handleShow(true)
+    handleShow(true);
   }
-
-
 
   return (
     <main style={{ padding: "1rem 0" }}>
@@ -162,7 +154,7 @@ export default function CartViewer() {
             <Card.Title>{item.name}</Card.Title>
             <Card.Body>
               <div style={{ position: "absolute", top: "4px", right: "4px" }}>
-                ${item.unit_price||item.starting_price}
+                ${item.unit_price || item.starting_price}
               </div>
               <div
                 style={{
@@ -204,7 +196,7 @@ export default function CartViewer() {
               Total: ${total}
             </Col>
             <Col style={{ alignContent: "flex-end" }}>
-              {/* <Paypal total={total} clearCart={clearCart}/> */}
+              <Paypal total={total} clearCart={clearCart}/>
               <Button onClick={clearCart} className="custom-buttons">
                 Empty Cart
               </Button>
@@ -219,7 +211,7 @@ export default function CartViewer() {
         </Card.Body>
       </Card>
       {/* I need to get the cart array into the confirmation modal, but I'm having trouble passing it in here. */}
-      <ConfirmationModal total={total}/>
+      <ConfirmationModal total={total} />
     </main>
   );
 }

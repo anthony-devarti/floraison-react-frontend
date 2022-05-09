@@ -1,8 +1,8 @@
 import axios from "axios";
 
-let testServerAPI = 'https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/items/'
-const testServerAPICookies = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/cookie_type/"
-const addOrderAPI = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/order_item/"
+let testServerAPI = 'https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us44.gitpod.io/floraison/items/'
+const testServerAPICookies = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us44.gitpod.io/floraison/cookie_type/"
+const addOrderAPI = "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us44.gitpod.io/floraison/order_item/"
 
 
 
@@ -18,7 +18,7 @@ export async function axiosGet() {
 
 export async function axiosGetOrdersByUserId(id) {
   return axios
-    .get(`https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/Orders/?id=&user=${id}`)
+    .get(`https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us44.gitpod.io/floraison/Orders/?id=&user=${id}`)
     .then((response) => response.data);
 }
 
