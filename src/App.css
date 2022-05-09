@@ -521,3 +521,7 @@ a {
     align-items: center;
     justify-content: space-around;
 }
+
+.form{
+    display: inline-block!important;
+}
