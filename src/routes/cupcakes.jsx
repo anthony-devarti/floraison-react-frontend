@@ -4,21 +4,31 @@ import { axiosGet } from '../data'
 import { useGlobalState } from '../components/GlobalState';
 
 export default function Cupcakes() {
-  const [cupcakeItems, setCupcakeItems] = useState([]);
-
-  useEffect( () => {
-    async function fetchData() {
-      // You can await here
-      const response = await axiosGet()
-      setCupcakeItems(response.results)
-      // ...
-      console.log({response})
+  const [menu, setMenu] = useState([]);
+  
+  
+  //behavior to fetch menu.  This is the same on all 3 category pages and I can't figure out how to consolidate it.
+  useEffect(() => {
+    let saved = localStorage.getItem("menu");
+    if (!saved){
+      async function fetchData() {
+        const response = await axiosGet();
+        setMenu(response.results);
+        localStorage.setItem("menu", JSON.stringify(response.results));
+        console.log({ response });
+      }
+      fetchData();
+    } else {
+      setMenu(JSON.parse(saved))
     }
-    fetchData();
   }, []);
+  
+  const [ state, dispatch ] = useGlobalState();
+
+  //sorts that menu into just cupcakes
+  let cupcakes = menu.filter( product => product.category===3 && product.published===true)
 
   //cart behavior
-  const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
 
   const addToCart = ({id, starting_price, name}) => {
@@ -28,7 +38,6 @@ export default function Cupcakes() {
     console.log(cart)
   }
 
-  let cupcakes = cupcakeItems.filter( product => product.category===3 && product.published===true)
     return (
         <main className='product-page'>
           <div className='superheader'>Cupcakes</div>

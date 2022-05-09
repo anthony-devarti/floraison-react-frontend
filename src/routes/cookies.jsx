@@ -6,19 +6,26 @@ import CustomCookiePlatter from "../components/CustomCookiePlatter";
 
 export default function Cookies() {
 
-  const [cookieItems, setCookieItems] = useState([]);
+  const [ state, dispatch ] = useGlobalState();
+  const [ menu, setMenu ] = useState([])
 
-  useEffect( () => {
-    async function fetchData() {
-      const response = await axiosGet()
-      setCookieItems(response.results)
+
+  useEffect(() => {
+    let saved = localStorage.getItem("menu");
+    if (!saved){
+      async function fetchData() {
+        const response = await axiosGet();
+        setMenu(response.results);
+        localStorage.setItem("menu", JSON.stringify(response.results));
+        console.log({ response });
+      }
+      fetchData();
+    } else {
+      setMenu(JSON.parse(saved))
     }
-    fetchData();
   }, []);
 
-
   //cart behavior
-  const [ state, dispatch ] = useGlobalState();
   let cart = state.cart
 
   const addToCart = ({id, starting_price, name}) => {
@@ -28,11 +35,11 @@ export default function Cookies() {
     console.log(cart)
   }
 
-  let cookies = cookieItems.filter( product => product.category===2 && product.published===true)
+  let cookies = menu.filter( product => product.category===2 && product.published===true)
     return (
         <main className="product-page">
           <div className="superheader">Cookies</div>
-          <p>This is the Cookies page.</p>
+          <h3>This is the Cookies page.</h3>
           <div className="products">
             
               {cookies.map((cookie) => (
