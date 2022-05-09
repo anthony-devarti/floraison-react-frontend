@@ -49,7 +49,7 @@ export default function Contact() {
 
       <div className="contact-mobile">
         <div className="form">
-          <form id="contact-form" onSubmit={handleSubmit}>
+          <form id="contact-form-mobile" onSubmit={handleSubmit}>
             <div className="form-group">
               <h1>Let's talk cake!</h1>
               <label htmlFor="name">Name</label>

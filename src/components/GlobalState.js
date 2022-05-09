@@ -19,9 +19,6 @@ const initialState = {
   }
 
   
-  // const initialState = initialValue || empty
-  // console.log(initialState)
-  
   const GlobalStateContext = createContext(initialState);
   const DispatchStateContext = createContext(undefined)
   
