@@ -6,15 +6,20 @@ import { useGlobalState } from '../components/GlobalState';
 export default function Cupcakes() {
   const [cupcakeItems, setCupcakeItems] = useState([]);
 
-  useEffect( () => {
-    async function fetchData() {
-      // You can await here
-      const response = await axiosGet()
-      setCupcakeItems(response.results)
-      // ...
-      console.log({response})
+  let saved = localStorage.getItem("menu");
+
+  useEffect(() => {
+    if (!saved){
+      async function fetchData() {
+        const response = await axiosGet();
+        setCupcakeItems(response.results);
+        localStorage.setItem("menu", JSON.stringify(response.results));
+        console.log({ response });
+      }
+      fetchData();
+    } else {
+      setCupcakeItems(JSON.parse(saved))
     }
-    fetchData();
   }, []);
 
   //cart behavior

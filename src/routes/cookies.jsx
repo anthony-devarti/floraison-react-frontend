@@ -8,12 +8,20 @@ export default function Cookies() {
 
   const [cookieItems, setCookieItems] = useState([]);
 
-  useEffect( () => {
-    async function fetchData() {
-      const response = await axiosGet()
-      setCookieItems(response.results)
+  let saved = localStorage.getItem("menu");
+
+  useEffect(() => {
+    if (!saved){
+      async function fetchData() {
+        const response = await axiosGet();
+        setCookieItems(response.results);
+        localStorage.setItem("menu", JSON.stringify(response.results));
+        console.log({ response });
+      }
+      fetchData();
+    } else {
+      setCookieItems(JSON.parse(saved))
     }
-    fetchData();
   }, []);
 
 
