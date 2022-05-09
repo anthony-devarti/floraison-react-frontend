@@ -43,6 +43,7 @@ const Login = ({handleClose}) => {
             type="text"
             id="username"
             name="username"
+            autoComplete="username"
             onChange={(e) => setUsername(e.target.value)}
             required
           />
@@ -55,6 +56,7 @@ const Login = ({handleClose}) => {
             name="password"
             minLength="2"
             required
+            autoComplete="current-password"
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>

@@ -22,7 +22,7 @@ export default function Home(){
          * @param {WheelEvent} e 
          */
         function scrollSnap(e){
-            console.log(e.deltaY);
+            // console.log(e.deltaY);
             e.preventDefault();
             if (debounce) return;
             

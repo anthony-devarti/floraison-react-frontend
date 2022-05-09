@@ -27,6 +27,7 @@
 
 .custom-buttons {
     background: linear-gradient(15deg, #72d8f2, #f26d85);
+    text-shadow: 3px 3px 2px #000;
     border: #8a99bf;
     font-size: 2vw;
     font-family: 'Antonio', sans-serif;
@@ -265,7 +266,10 @@ a {
 
 .dan-schneider {
     align-content: space-around;
-    height: min-content;
+    height: max-content;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
 }
 
 .card-buttons {
@@ -484,3 +488,23 @@ a {
     font-family: 'Antonio', sans-serif;
 }
 
+.past-orders {
+    background-color: #ffffff60 ;
+    border-color: white;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    width: 30vh;
+    overflow-y: scroll;
+}
+
+.profile{
+    background-color: #8a99bf;
+    height: 110vh;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+}
