@@ -5,26 +5,24 @@ import { Card, Button } from "react-bootstrap";
 import { useGlobalState } from "../components/GlobalState";
 
 export default function Cakes() {
-  const [cakeItems, setCakeItems] = useState([]);
-
-  let saved = localStorage.getItem("menu");
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
+    let saved = localStorage.getItem("menu");
     if (!saved){
       async function fetchData() {
-        // You can await here
         const response = await axiosGet();
-        setCakeItems(response.results);
+        setMenu(response.results);
         localStorage.setItem("menu", JSON.stringify(response.results));
         console.log({ response });
       }
       fetchData();
     } else {
-      setCakeItems(JSON.parse(saved))
+      setMenu(JSON.parse(saved))
     }
   }, []);
 
-  let cakes = cakeItems.filter((product) => product.category === 1);
+  let cakes = menu.filter((product) => product.category === 1);
 
   //cart behavior
   const [state, dispatch] = useGlobalState();

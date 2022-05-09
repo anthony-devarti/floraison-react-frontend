@@ -39,4 +39,3 @@ export async function axiosPostOrder(itemObject) {
   // special_instructions = models.CharField(max_length=200, null=True)
   axios.post(addOrderAPI[itemObject])
 }
-
