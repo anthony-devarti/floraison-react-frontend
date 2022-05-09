@@ -47,21 +47,26 @@ const Profile = () => {
   return (
     <div className="profile">
       <div>
-        <h1>Hey there, {firstName}</h1>
-        <h2>Welcome back! What are we looking to do today?</h2>
-
-        <Button onClick={() => stateChecker()}>View State</Button>
-        <Button className="custom-buttons" onClick={logoutHandler}>
-          Log Out
-        </Button>
+        <div className="subheader">
+          <h1>Hey there, {firstName}</h1>
+          <h2>Welcome back! What are we looking to do today?</h2>
+          <div classname="action-buttons">
+            <Button className="custom-buttons" href="#past-orders"> Recent Orders</Button>
+            <Button onClick={() => stateChecker()}>View State</Button>
+            <Button className="custom-buttons" onClick={logoutHandler}>
+              Log Out
+            </Button>
+          </div>
+        </div>
       </div>
-        <div className="superheader">Past Orders</div>
-      <div classname="center">
-      <h3>Check out your past orders, click "Run it back" if you want to order the same thing again!</h3>
-      </div>
+      <div className="superheader" id="past-orders">Past Orders</div>
+      <h3 className="center">
+        Check out your past orders, click "Run it back" if you want to order the
+        same thing again!
+      </h3>
       <div className="products">
         {orders.map((order, index) => (
-          <Card key={order.id} border="dark" className="past-orders">
+          <Card key={order.id} className="past-orders">
             <Card.Body>
               <Card.Title>
                 Order #: {order.id} | Total: ${order.total}
@@ -74,7 +79,7 @@ const Profile = () => {
                   </li>
                 ))}
               </ul>
-              <Card.Footer className="dan-schneider">
+              <Card.Footer className="dan-schneider center">
                 <Button
                   className="custom-buttons card-buttons"
                   onClick={() => runItBack(order.order_item_set)}
