@@ -31,6 +31,8 @@ export default function CustomCookiePlatter(cookieItems) {
   const [price, setPrice] = useState(0);
   //keeps track of the current number of cookies in the tray
   const [current, setCurrent] = useState(0);
+  //keeps track of the current additional cost from modifiers
+  const [modifier, setModifier] = useState(0)
 
   //these handle conditional rendering of elements that will only appear under certain conditions.
   //https://reactjs.org/docs/conditional-rendering.html
@@ -41,25 +43,25 @@ export default function CustomCookiePlatter(cookieItems) {
 
 
   //this is a component that is being conditionally rendered. It's probably not worth it to make it it's own file
-  function FloatingTotal(){
-    if (counterVisible===true){
-      return(
+  function FloatingTotal() {
+    if (counterVisible === true) {
+      return (
         <div className="floating-total">
-        <div>
-          {current}/{size}
+          <div>
+            {current}/{size}
+          </div>
+          <div>${price}</div>
         </div>
-        <div>${price}</div>
-      </div>
       )
     }
   }
   //cart behavior
-  const [ state, dispatch ] = useGlobalState();
+  const [state, dispatch] = useGlobalState();
   let cart = state.cart
-  function handleAdd(size, price, tray){
+  function handleAdd(size, price, tray) {
     let product = {
-      "name":size + "cookie platter",
-      "contents":tray,
+      "name": size + "cookie platter",
+      "contents": tray,
       "starting_price": price
     }
     dispatch([cart.push(product)])
@@ -72,14 +74,15 @@ export default function CustomCookiePlatter(cookieItems) {
   }
 
   //the conditionally rendered add to cart button that should display when the tray is full and ready to be added to the cart as an item.
-  function AddButton(){
-    if (addVisible===true){
-      return(
-        <Button className="custom-buttons cond-checkout" onClick={() => handleAdd(size, price, tray)}>Add to Cart</Button> 
-    )}
+  function AddButton() {
+    if (addVisible === true) {
+      return (
+        <Button className="custom-buttons cond-checkout" onClick={() => handleAdd(size, price, tray)}>Add to Cart</Button>
+      )
     }
+  }
 
-    /// end of cart behavior ///
+  /// end of cart behavior ///
 
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
@@ -88,48 +91,48 @@ export default function CustomCookiePlatter(cookieItems) {
   const [title, setTitle] = useState('Nothing yet')
   const [message, setMessage] = useState('Nothing')
 
-  function CookieModal(){
-    
-    if (show == true) {
-      useEffect(() => {
-      if (modalVersion == 'small'){
-        setTitle("We're gonna need a bigger tray!")
-        setMessage("You have too many cookies to switch to a tray this small!")
-      } else if (modalVersion == 'err'){
-        setTitle("Error")
-        setMessage("Something went wrong.  Refresh the window and try again.")
-      } else if (modalVersion == 'notray'){
-        setTitle("You don't have a tray!")
-        setMessage("Choose a tray size first, then add some cookies.")
-      } else if (modalVersion== 'big'){
-        setTitle("Too many cookies!")
-        setMessage("You're trying to add more cookies than this tray can hold.")
-      } else if (modalVersion=='cookie404'){
-        setTitle("What cookie?")
-        setMessage("The cookie you're trying to remove isn't on this tray")
+  function CookieModal() {
+
+    useEffect(() => {
+      if (show == true) {
+        if (modalVersion == 'small') {
+          setTitle("We're gonna need a bigger tray!")
+          setMessage("You have too many cookies to switch to a tray this small!")
+        } else if (modalVersion == 'err') {
+          setTitle("Error")
+          setMessage("Something went wrong.  Refresh the window and try again.")
+        } else if (modalVersion == 'notray') {
+          setTitle("You don't have a tray!")
+          setMessage("Choose a tray size first, then add some cookies.")
+        } else if (modalVersion == 'big') {
+          setTitle("Too many cookies!")
+          setMessage("You're trying to add more cookies than this tray can hold.")
+        } else if (modalVersion == 'cookie404') {
+          setTitle("What cookie?")
+          setMessage("The cookie you're trying to remove isn't on this tray")
+        }
       }
-      },[])
-      return (
-        <Modal className="floraison-modal" show={show} onHide={handleClose}>
-          <Modal.Header closeButton>
-            <Modal.Title>{title}</Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-            {message}
-          </Modal.Body>
-          <Modal.Footer>
-            <Button variant="secondary" onClick={handleClose}>
-              Close
-            </Button>
-          </Modal.Footer>
-        </Modal>
-      );
-    }
+    }, [])
+    return (
+      <Modal className="floraison-modal" show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>{title}</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {message}
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    );
   }
-  
+
 
   function build(e) {
-    if (e.target.id < size){
+    if (e.target.id < tray.length) {
       setModalVersion('small')
       handleShow()
     }
@@ -137,19 +140,19 @@ export default function CustomCookiePlatter(cookieItems) {
     switch (true) {
       //these are working with == and not ===.  probably e.target.id isn't the number, but a string of the number or something like that.
       case e.target.id == 12:
-        setPrice(13.99);
+        setPrice(13.99 + modifier);
         setSize(12);
         break;
       case e.target.id == 24:
-        setPrice(19.99);
+        setPrice(19.99 + modifier);
         setSize(24);
         break;
       case e.target.id == 36:
-        setPrice(26.99);
+        setPrice(26.99 + modifier);
         setSize(36);
         break;
       case e.target.id == 48:
-        setPrice(31.99);
+        setPrice(31.99 + modifier);
         setSize(48);
         break;
       default:
@@ -168,17 +171,18 @@ export default function CustomCookiePlatter(cookieItems) {
   function addCookie(e, type, mod) {
     if (!size) {
       //prompt user to choose a tray size in a modal, instead
-//      Make sure to make e.target.id equal to the tray size no matter where it comes from or you'll have to rewrite the build function
+      //      Make sure to make e.target.id equal to the tray size no matter where it comes from or you'll have to rewrite the build function
       setModalVersion('notray')
       handleShow()
     } else if (tray.length < size) {
       let newTray = tray;
       newTray.push(type);
       setTray([...newTray]);
-      setPrice(price + mod);
+      setModifier(modifier + mod)
+      setPrice(price + modifier);
       setCurrent(tray.length);
       //weird because of the render
-      if(current===size-1){
+      if (current === size - 1) {
         setAddVisible(true)
       }
     } else {
@@ -216,7 +220,8 @@ export default function CustomCookiePlatter(cookieItems) {
       let newTray = tray;
       newTray.splice(removed, 1);
       setTray([...newTray]);
-      setPrice(price - mod);
+      setModifier(modifier - mod);
+      setPrice(price - modifier);
       setCurrent(tray.length);
     } else {
       setModalVersion('cookie404');
