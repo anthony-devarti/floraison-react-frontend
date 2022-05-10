@@ -21,7 +21,6 @@ function App() {
   let navigate = useNavigate();
 
   function LoginHandler() {
-    console.log("do login stuff here");
     //this is grabbing this info in a weird way right now.
     // it's grabbing all of the info and showing the current
 
@@ -60,6 +59,10 @@ function App() {
   const [state, dispatch] = useGlobalState();
   let cart = state.cart;
 
+  //put the logo stuff here
+  const logo = process.env.PUBLIC_URL + "/logo.svg";
+
+
   return (
     <div className="App">
       <div className="snapper">
@@ -70,7 +73,9 @@ function App() {
                 <h1>LA FLORAISON</h1>
               </Link>
             </Navbar.Brand>
-            <div className="logo">Logo</div>
+            <div className="logo">
+              <img src={logo} alt="icon" style={{width:'160px'}}/>
+            </div>
             <div className="right-nav">
               <Link to="/cart">
                 <Button className="custom-buttons">

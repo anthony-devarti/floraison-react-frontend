@@ -18,6 +18,7 @@
     height: 8rem;
     font-size: 40pt;
     font-family: 'Antonio', sans-serif;
+    flex-direction: row;
 }
 
 .action-buttons{
@@ -228,7 +229,7 @@ a {
     }
 
     .logo {
-        display: flex
+        display: flex;
     }
 }
 
