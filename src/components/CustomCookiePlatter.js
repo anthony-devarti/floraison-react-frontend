@@ -44,13 +44,14 @@ export default function CustomCookiePlatter(cookieItems) {
 
   //this is a component that is being conditionally rendered. It's probably not worth it to make it it's own file
   function FloatingTotal() {
+    let total = (price + modifier).toFixed(2);
     if (counterVisible === true) {
       return (
         <div className="floating-total">
           <div>
             {current}/{size}
           </div>
-          <div>${price}</div>
+          <div>${total}</div>
         </div>
       )
     }
@@ -58,12 +59,30 @@ export default function CustomCookiePlatter(cookieItems) {
   //cart behavior
   const [state, dispatch] = useGlobalState();
   let cart = state.cart
+
   function handleAdd(size, price, tray) {
-    let product = {
-      "name": size + "cookie platter",
-      "contents": tray,
-      "starting_price": price
+    //id may need to change based on the new item ids when they are added to heroku
+
+    function productNumber(size){
+      if (size==12){
+        return 1
+      } else if (size==24) {
+        return 2
+      } else if (size==36){
+        return 3
+      } else {
+        return 0
+      }
     }
+
+    let product = {
+      "name": size + " Cookie Platter",
+      "id": productNumber(size),
+      "message": tray,
+      "unit_price": price,
+      "special_instructions": null
+    }
+
     dispatch([cart.push(product)])
     localStorage.setItem("cart", JSON.stringify(state.cart))
     setTray([])
@@ -178,8 +197,9 @@ export default function CustomCookiePlatter(cookieItems) {
       let newTray = tray;
       newTray.push(type);
       setTray([...newTray]);
-      setModifier(modifier + mod)
-      setPrice(price + modifier);
+
+      //this is not doing what I think it should be doing
+      setModifier(modifier + mod);
       setCurrent(tray.length);
       //weird because of the render
       if (current === size - 1) {
@@ -221,7 +241,6 @@ export default function CustomCookiePlatter(cookieItems) {
       newTray.splice(removed, 1);
       setTray([...newTray]);
       setModifier(modifier - mod);
-      setPrice(price - modifier);
       setCurrent(tray.length);
     } else {
       setModalVersion('cookie404');
