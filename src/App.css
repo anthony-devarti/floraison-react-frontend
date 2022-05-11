@@ -60,7 +60,7 @@ h2{
 }
 
 h3{
-    font-size: 30pt;
+    font-size: 3rem;
     font-family: 'Square Peg', cursive;
     color: #72d8f2;
 }
@@ -536,4 +536,13 @@ a {
 
 .form{
     display: inline-block!important;
+}
+
+.cart{
+    background-color: #8a99bf;
+}
+
+.checkout-tray{
+    padding: 5vw;
+    background-color: #ffffff60;
 }
