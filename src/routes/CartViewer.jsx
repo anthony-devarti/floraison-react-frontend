@@ -32,7 +32,8 @@ export default function CartViewer() {
 
   const tax = (parseFloat(sum) * 0.06).toFixed(2);
 
-  const total = parseFloat(sum) + parseFloat(tax);
+  // yes, this is very dumb
+  const total = (Math.ceil((parseFloat(sum) + parseFloat(tax))*100))/100;
 
   //removes this item from the cart
   function remove(e) {
