@@ -139,30 +139,23 @@ export default function CartViewer() {
   }
 
   return (
-    <main style={{ padding: "1rem 0" }}>
+    <div className="cart">
       <div className="superheader">Cart</div>
-      <p>View the contents of your cart and checkout.</p>
+      <h3 className="center">View the contents of your cart and checkout.</h3>
       <div className="products">
         {cart.map((item, index) => (
           <Card
             key={item.name + index}
             id={index}
-            border="dark"
-            className="product-cards"
+            className="past-orders"
             style={{ height: "auto" }}
-          >
-            <Card.Title>{item.name}</Card.Title>
+            >
             <Card.Body>
-              <div style={{ position: "absolute", top: "4px", right: "4px" }}>
+            <Card.Title>{item.name}</Card.Title>
+              <div>
                 ${item.unit_price || item.starting_price}
               </div>
-              <div
-                style={{
-                  alignContent: "center",
-                  alignItems: "center",
-                  justifyContent: "r",
-                }}
-              >
+              <div>
                 <Button
                   id={item.id}
                   style={{ margin: "4px" }}
@@ -184,11 +177,11 @@ export default function CartViewer() {
           </Card>
         ))}
       </div>
-      <Card key="total">
-        <Card.Title>Checkout</Card.Title>
-        <Card.Body>
-          <Row style={{ alignContent: "space-between" }}>
-            <Col>
+      <div key="total">
+        <h1 className="center">Checkout</h1>
+        <div>
+          <Row className="checkout-tray" style={{ alignContent: "space-between" }}>
+            <Col className="center">
               Subtotal: ${sum}
               <br></br>
               Est. Tax: ${tax}
@@ -208,10 +201,10 @@ export default function CartViewer() {
               </Button>
             </Col>
           </Row>
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
       {/* I need to get the cart array into the confirmation modal, but I'm having trouble passing it in here. */}
       <ConfirmationModal total={total} />
-    </main>
+    </div>
   );
 }
