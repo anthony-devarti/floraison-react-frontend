@@ -31,5 +31,5 @@ export async function axiosPostOrder(itemObject) {
   // unit_price = models.FloatField()
   // message = models.CharField(max_length=50, null=True)
   // special_instructions = models.CharField(max_length=200, null=True)
-  axios.post(based + "order_item/"[itemObject])
+  axios.post(base + "order_item/"[itemObject])
 }
