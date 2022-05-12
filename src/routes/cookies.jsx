@@ -10,6 +10,7 @@ export default function Cookies() {
   const [ menu, setMenu ] = useState([])
 
 
+  //I want this all in one place.
   useEffect(() => {
     let saved = localStorage.getItem("menu");
     if (!saved){
