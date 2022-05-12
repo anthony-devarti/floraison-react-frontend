@@ -45,11 +45,11 @@ export default function Cakes() {
   return (
     <main className="product-page">
       <div className="superheader">Cakes</div>
-      <p>
+      <h3 className="center">
         Whether it's for a party, a special event, or even just because you feel
         like having a cake for yourself, you're sure to find something perfect,
         here!
-      </p>
+      </h3>
       <div className="products">
         {cakes.map((cake) => (
           <Card key={cake.name} border="dark" className="product-cards">
