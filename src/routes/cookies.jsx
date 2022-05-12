@@ -17,7 +17,12 @@ export default function Cookies() {
       async function fetchData() {
         const response = await axiosGet();
         setMenu(response.results);
-        localStorage.setItem("menu", JSON.stringify(response.results));
+        //only save this if it isn't garbage.
+        if (response.results){
+          localStorage.setItem("menu", JSON.stringify(response.results));
+        } else {
+          alert("We couldn't find anything!")
+        }
         console.log({ response });
       }
       fetchData();
