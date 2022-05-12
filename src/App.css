@@ -194,7 +194,7 @@ a {
     }
 
     .mobile-background {
-        background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+        /* background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg'); */
         background-size: cover;
     }
 
@@ -217,7 +217,7 @@ a {
     }
 
     .imagefield {
-        background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        /* background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg"); */
         background-size: auto;
         background-repeat: no-repeat;
         background-position: center;
