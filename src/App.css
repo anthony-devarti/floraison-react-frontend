@@ -1,0 +1,549 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio&family=Square+Peg&display=swap');
+
+.body {
+    scroll-snap-type: y mandatory;
+    background-color: #8a99bf;
+    padding-bottom: 40px;
+}
+
+.navigator {
+    background-color: #72dbf2;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    height: 8rem;
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+    flex-direction: row;
+}
+
+.action-buttons{
+    align-content: space-around;
+    margin: .5rem;
+    align-items: flex-end;
+}
+
+.custom-buttons {
+    background: linear-gradient(15deg, #72d8f2, #f26d85);
+    text-shadow: 3px 3px 2px #000;
+    border: #8a99bf;
+    font-size: 2vw;
+    font-family: 'Antonio', sans-serif;
+    color: white!important;
+    margin: 1rem;
+    max-height: fit-content;
+    width: max-content;
+
+}
+
+.superheader {
+    font-size: 11vw;
+    color: white;
+    font-family: 'Antonio', sans-serif;
+    text-align: center;
+    padding-top: 4rem;
+    text-shadow: 3px 3px 2px #000;
+}
+
+h1{
+    font-size: 64pt;
+    font-family: 'Antonio', sans-serif;
+}
+
+h2{
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+}
+
+h3{
+    font-size: 3rem;
+    font-family: 'Square Peg', cursive;
+    color: #72d8f2;
+}
+
+h4 {
+    font-size: 15rem;
+    font-family: 'Antonio', sans-serif;
+    color: #8a99bf;
+}
+
+.offcanvas {
+    font-size: 40pt;
+    font-family: 'Antonio', sans-serif;
+    background-color: #72d8f2;
+}
+
+a {
+    text-decoration: none !important;
+    color: inherit !important;
+}
+
+.offcanvas {
+    background-color:#8a99bf !important;
+    visibility: visible !important;
+}
+
+.octitle {
+    color: #8a99bf;
+    flex-direction: row;
+}
+
+.tiles {
+    flex-flow: column;
+}
+
+.cookies {
+    background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png');
+    z-index: 1;
+    background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
+}
+
+.cookies:hover {
+    background-color: #72dbf2;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+}
+
+.cupcakes {
+    background-image: url('/workspace/floraison-react-frontend/public/images/cupcake.jpeg');
+    z-index: 1;
+    background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
+}
+
+.cupcakes:hover {
+    background-color: #8a99bf;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+}
+
+.cakes {
+    background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+    z-index: 1;
+    background-size:cover;
+    width: 33vw;
+    max-width: 33vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+    text-align: center;
+    color: transparent;
+}
+
+.cakes:hover {
+    background-color: #f26d85;
+    background-image: none;
+    z-index: 2;
+    text-align: center;
+    font-size: 8rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 35vw;
+    max-width: 35vw;
+    max-height: 33vw;
+    padding-bottom: 33vw;
+    display: -moz-inline-grid;
+}
+
+@media (max-width: 750px){
+    .full-screen {
+        display: none;
+    }
+
+    .mobile-screen {
+        display: flex;
+        height: 90vh;
+        flex-direction: column;
+        justify-content: space-between;
+        color: white;
+    }
+
+    .mobile-background {
+        background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg');
+        background-size: cover;
+    }
+
+    .logo {
+        display: none;
+    }
+
+}
+
+@media (min-width: 750px) {
+
+    .full-screen {
+        height: 90vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        background-color: #b4fefb;
+        background-size: cover;
+        padding-top: 5vh;
+    }
+
+    .imagefield {
+        background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg");
+        background-size: auto;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 50vh;
+    }
+
+    .mobile-screen {
+        display: none;
+    }
+
+    .logo {
+        display: flex;
+    }
+}
+
+.tile-text {
+    padding-top: 30%;
+    /* font-size: 10vw; */
+}
+
+.offcanvas-body {
+    background-color: #8a99bf;
+}
+
+.offcanvas-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 1rem;
+    background-color: #8a99bf;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.offcanvas-header .btn-close {
+    position: absolute;
+    top: 20px;
+    color: white;
+}
+
+.products {
+    display: flex;
+    align-content: space-between;
+    margin: 2rem;
+    flex-wrap: wrap;
+}
+
+.dan-schneider {
+    align-content: space-around;
+    height: max-content;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.card-buttons {
+    position: relative;
+}
+
+.card-image {
+    height: 20rem;
+    object-fit: cover;
+}
+ /* This is just here to overwrite bootstrap */
+.card-img {
+    border-top-left-radius: 10% !important;
+    border-top-right-radius: 10% !important;
+}
+
+.nav-strip {
+    z-index: 2;
+    text-align: center;
+    font-size: 4rem;
+    color: white;
+    font-family: 'Square Peg', cursive;
+    width: 110vw;
+    max-height: 25vh;
+    display: flex
+}
+
+.about {
+    background-color: #8a99bf;
+    color: white;
+    text-align: center;
+    height: 90vh;
+}
+
+.icons {
+    justify-content: space-around;
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+
+.content {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+}
+
+.nav-strips {
+    align-self: flex-end;
+}
+
+.right-nav {
+    display: flex;
+    flex-direction: flex-end;
+    flex-flow: row;
+    margin: .5rem;
+}
+
+.contact {
+    height: 90vh;
+    background-color: #72dbf2;
+    align-content: center;
+    align-items: center;
+    justify-content: space-around;
+    justify-items: center;
+    scroll-snap-align: start;
+    padding-top: 5vh;
+}
+
+.descriptor {
+    color: white;
+    font-size: 1rem;
+    margin-left: 15vw;
+    margin-right: 15vw;
+    margin-top: 5vh;
+}
+
+.form {
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.form-submit-button {
+    width: 70vw;
+    height: 5vh;
+    border-color: white !important;
+    border-width: 2pt !important;
+}
+
+.product-cards {
+    width: 400px;
+    height: 70vh;
+    margin: 1rem
+}
+
+.product-page {
+    background-color: #8a99bf;
+    padding-bottom: 100px;
+}
+
+.products {
+    align-items: flex-start;
+    align-content: space-around;
+    justify-content: space-around;
+}
+
+@media (max-width: 750px){
+    .contact-desktop {
+        display: none;
+    }
+
+    .contact-mobile {
+        display: flex;
+        height: 90vh;
+        flex-direction: column;
+        justify-content: space-around;
+        color: white;
+        background-color: #72dbf2;
+    }
+
+}
+
+@media (min-width: 750px) {
+
+    .contact-desktop {
+        height: 90vh;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+
+    .contact-mobile {
+        display: none;
+    }
+}
+.circle-button {
+    position: absolute;
+    border-radius: 50% !important;
+    bottom: -20px;
+    background-color: #f26d85 !important;
+    border-color: white !important;
+    border-width: 4px !important;
+}
+
+.cookie-clicker {
+    width: 30vw;
+    height: 25vw;
+    background-color: transparent !important;
+    border-color: white !important;
+    border-width: 4px !important;
+    color: white !important;
+    margin: 4rem;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 35% !important;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    padding-left: 1vw;
+    padding-right: 1vw;
+}
+
+.cookie-clicker-image {
+    position: absolute;
+    top: -5rem;
+    left: -5rem;
+    width: 100%;
+    height: auto;
+    max-width: 15vw;
+    max-height: auto;
+}
+
+/* This is just here for when I need to space two sections vertically without modifying their class css rules */
+.vertical-spacer{
+    height: 10vh
+}
+
+.floating-total {
+    border-radius: 25%;
+    outline: solid;
+    outline-width: medium;
+    background-color: #f26d85;
+    color: white;
+    font-size: 2.5rem;
+    font-family: 'Antonio', sans-serif;
+    height: 8rem;
+    width: 16rem;
+    position: sticky;
+    bottom: 1rem;
+    left: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-items: center;
+    align-items: center;
+}
+
+.cond-checkout {
+    width: 40vw;
+    height: 10vw;
+    position: sticky;
+    bottom: 10rem;
+    border-radius: 25%;
+    font-size: 2.5rem !important;
+}
+
+.card{
+    border-radius: 10% !important;
+}
+
+
+
+.modal-content{
+    background: linear-gradient(15deg, #72d8f2, #f26d85);
+    border: #8a99bf;
+    color: white;
+    font-family: 'Antonio', sans-serif;
+    height: 50vh;
+}
+
+.modal-body{
+    font-size: 2rem;
+}
+
+.modal-title{
+    font-size: 4rem!important;
+}
+
+.past-orders {
+    background-color: #ffffff60!important;
+    border-color: white;
+    border: 4px solid white!important;
+    margin: 1px;
+    display: flex;
+    flex-direction: column;
+    height: 30vh;
+    width: 30vh;
+    overflow-y: scroll;
+    border-top-right-radius: 0!important;
+    border-bottom-left-radius: -0!important;
+}
+
+.profile{
+    background-color: #8a99bf;
+    padding-bottom: 100px;
+}
+
+.center{
+    display: flex;
+    justify-content: center;
+    font-size: 3rem;
+    padding-left: 15vw;
+    padding-right: 15vw;
+}
+
+.subheader{
+    display: flex;
+    flex-direction: column;
+    height: 90vh;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.form{
+    display: inline-block!important;
+}
+
+.cart{
+    background-color: #8a99bf;
+}
+
+.checkout-tray{
+    padding: 5vw;
+    background-color: #ffffff60;
+}
