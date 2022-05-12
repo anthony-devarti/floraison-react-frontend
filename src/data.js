@@ -1,8 +1,5 @@
 import axios from "axios";
 
-//may need to make this into an env variable
-const base = process.env.REACT_APP_BASE
-
 export async function axiosGet() {
   return axios
     .get(process.env.REACT_APP_BASE + 'items/')
