@@ -97,7 +97,7 @@ a {
 }
 
 .cookies {
-    /* background-image: url('/workspace/floraison-react-frontend/public/images/chocolate chip.png'); */
+    background-image: url('../public/images/chocolate chip.png');
     z-index: 1;
     background-size:cover;
     width: 33vw;
@@ -125,7 +125,7 @@ a {
 }
 
 .cupcakes {
-    /* background-image: url('/workspace/floraison-react-frontend/public/images/cupcake.jpeg'); */
+    background-image: url('../public/images/cupcake.jpeg');
     z-index: 1;
     background-size:cover;
     width: 33vw;
@@ -194,7 +194,7 @@ a {
     }
 
     .mobile-background {
-        /* background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg'); */
+        background-image: url('../public/images/deathbychocolatecake.jpeg');
         background-size: cover;
     }
 
@@ -217,7 +217,7 @@ a {
     }
 
     .imagefield {
-        /* background-image:  url("/workspace/floraison-react-frontend/public/images/cherry cupcake.jpeg"); */
+        background-image:  url("../public/images/cherry cupcake.jpeg");
         background-size: auto;
         background-repeat: no-repeat;
         background-position: center;
