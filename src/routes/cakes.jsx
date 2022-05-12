@@ -7,6 +7,8 @@ import { useGlobalState } from "../components/GlobalState";
 export default function Cakes() {
   const [menu, setMenu] = useState([]);
 
+
+  //I hate that this is repeated everywhere.
   useEffect(() => {
     let saved = localStorage.getItem("menu");
     if (!saved){
