@@ -153,7 +153,7 @@ a {
 }
 
 .cakes {
-    /* background-image: url('/workspace/floraison-react-frontend/public/images/deathbychocolatecake.jpeg'); */
+    background-image: url('../public/images/deathbychocolatecake.jpeg');
     z-index: 1;
     background-size:cover;
     width: 33vw;
