@@ -202,6 +202,10 @@ a {
         display: none;
     }
 
+    .right-buttons {
+        display: none;
+    }
+
 }
 
 @media (min-width: 750px) {
@@ -229,6 +233,10 @@ a {
     }
 
     .logo {
+        display: flex;
+    }
+
+    .right-buttons{
         display: flex;
     }
 }

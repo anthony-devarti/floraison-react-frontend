@@ -115,7 +115,7 @@ export default function CartViewer() {
     };
     axios
       .post(
-        "https://8000-anthonydeva-djangobacke-pk8s8czgzh1.ws-us43.gitpod.io/floraison/order_item/create_orders/",
+        process.env.REACT_APP_BASE + "order_item/create_orders/",
         orderObject
       )
       //need to save response.data to a variable

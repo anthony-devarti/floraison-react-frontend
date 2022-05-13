@@ -77,6 +77,7 @@ function App() {
               <img src={logo} alt="icon" style={{width:'160px'}}/>
             </div>
             <div className="right-nav">
+              <div className="right-buttons">
               <Link to="/cart">
                 <Button className="custom-buttons">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
@@ -89,6 +90,7 @@ function App() {
                 </Button>
               </Link>
               <UserButton />
+              </div>
 
               <Navbar.Toggle aria-controls="offcanvasNavbar" />
               <Navbar.Offcanvas
