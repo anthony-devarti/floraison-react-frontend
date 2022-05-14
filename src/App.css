@@ -603,8 +603,10 @@ a {
     display: flex;
     flex-flow: row nowrap;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     width: 100%;
     height: 100vh;
     background-color: #8a99bf;
+    padding-top: 15vh;
   }
+

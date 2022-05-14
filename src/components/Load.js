@@ -1,21 +1,22 @@
 import { useEffect } from "react"
 import { useNavigate } from "react-router"
+import { motion } from "framer-motion"
+import { LogoBounce } from "./LogoBounce"
 
-export default function LoginHandler(){
+export default function LoginHandler() {
 
+    //sends user to home page when loading is done.
     const navigate = useNavigate()
 
     useEffect(() => {
         setTimeout(() => {
             navigate('/home')
-          }, 3000)
+        }, 3000)
     })
-
-    const logo = process.env.PUBLIC_URL + "/logo.svg"
 
     return (
         <div className="loading">
-            <img src={logo} />
+            <LogoBounce />
         </div>
     )
 }
