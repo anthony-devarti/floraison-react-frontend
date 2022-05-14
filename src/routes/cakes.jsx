@@ -48,9 +48,7 @@ export default function Cakes() {
     <main className="product-page">
       <div className="superheader">Cakes</div>
       <h3 className="center">
-        Whether it's for a party, a special event, or even just because you feel
-        like having a cake for yourself, you're sure to find something perfect,
-        here!
+        It's not a party if there's no cake.  I don't make the rules.
       </h3>
       <div className="products">
         {cakes.map((cake) => (
