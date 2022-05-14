@@ -37,7 +37,7 @@ const Login = ({handleClose}) => {
   return (
     <div className="c-form">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="form-row">
           <label htmlFor="username">Username:</label>
           <input
             type="text"
@@ -48,7 +48,7 @@ const Login = ({handleClose}) => {
             required
           />
         </div>
-        <div>
+        <div className="form-row">
           <label htmlFor="pass">Password</label>
           <input
             type="password"
@@ -60,7 +60,7 @@ const Login = ({handleClose}) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
-        <input
+        <input className="btn btn-info"
           type="submit"
           value="Sign in"
         />
