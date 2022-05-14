@@ -13,6 +13,8 @@ export default function Load() {
     const navigate = useNavigate()
 
     //this is bouncing users back to the home page whenever they navigate
+    //fixed that, now the bouncing cupcake is ot the bottom of every page
+    //added the loading return to the conditional statement, now it only renders whne it should.
 
     const usePathname = () => {
         const location = useLocation();
@@ -23,11 +25,13 @@ export default function Load() {
         setTimeout(() => {
             navigate('/home')
         }, 3000)
+        return (
+            <div className="loading">
+                <LogoBounce />
+            </div>
+        )
+    } else {
+        return null
     }
-
-    return (
-        <div className="loading">
-            <LogoBounce />
-        </div>
-    )
+    
 }
