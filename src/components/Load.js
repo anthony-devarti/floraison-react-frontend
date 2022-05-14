@@ -19,9 +19,7 @@ export default function Load() {
         return location.pathname;
     }
 
-    console.log(location.pathname)
-
-    if (location.pathname === "/") {
+    if (window.location.pathname === "/") {
         setTimeout(() => {
             navigate('/home')
         }, 3000)
