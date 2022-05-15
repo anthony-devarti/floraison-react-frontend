@@ -139,6 +139,16 @@ export default function CartViewer() {
     handleShow(true);
   }
 
+  function Empty(){
+    if (cart.length <1){
+      return(
+        <>
+        <h3 className="center">Nothing in here, yet!</h3>
+        </>
+      )
+    }
+  }
+
   return (
     <div className="cart">
       <div className="superheader">Cart</div>

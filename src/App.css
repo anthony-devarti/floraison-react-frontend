@@ -1,9 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Antonio&family=Square+Peg&display=swap');
 
+.html {
+    overscroll-behavior: none;
+    background-color: #8a99bf;
+    overflow: hidden;
+}
+
 .body {
     scroll-snap-type: y mandatory;
     background-color: #8a99bf;
     padding-bottom: 40px;
+    overflow: hidden;
 }
 
 .navigator {
@@ -385,6 +392,7 @@ a {
 .product-page {
     background-color: #8a99bf;
     padding-bottom: 100px;
+    overscroll-behavior: none;
 }
 
 .products {

@@ -17,15 +17,18 @@ const Profile = () => {
   const [orders, setOrders] = useState([]);
   useEffect(() => {
     async function fetchData() {
+      console.log(id)
       const response = await axiosGetOrdersByUserId(id);
+      console.log(response.results)
       setOrders(response.results);
     }
     fetchData();
+    console.log(orders);
   }, []);
 
   function logoutHandler() {
     localStorage.removeItem("user");
-    dispatch(state.currentUser = null);
+    dispatch((state.currentUser = null));
     navigate("/home");
   }
 
@@ -44,6 +47,53 @@ const Profile = () => {
     // console.log("current: ", current)
   }
 
+  function Past() {
+    if (orders) {
+      return (
+        <>
+          <div className="superheader" id="past-orders">
+            Past Orders
+          </div>
+          <h3 className="center">
+            Check out your past orders, click "Run it back" if you want to order
+            the same thing again!
+          </h3>
+          <div className="products">
+            {orders.map((order, index) => (
+              <Card key={order.id} className="past-orders">
+                <Card.Body>
+                  <Card.Title>
+                    Order #: {order.id} | Total: ${order.total}
+                  </Card.Title>
+                  <Card.Text></Card.Text>
+                  <ul>
+                    {order.order_item_set.map((line, index) => (
+                      <li key={line.item.name + index}>
+                        {line.item.name} {line.unit_price}
+                      </li>
+                    ))}
+                  </ul>
+                  <Card.Footer className="dan-schneider center">
+                    <Button
+                      className="custom-buttons card-buttons"
+                      onClick={() => runItBack(order.order_item_set)}
+                    >
+                      Run it back
+                    </Button>
+                  </Card.Footer>
+                </Card.Body>
+              </Card>
+            ))}
+          </div>
+        </>
+      );
+    } else {
+      return (
+        <p>Nothing to see here.</p>
+      )
+    }
+  }
+
   return (
     <div className="profile">
       <div>
@@ -51,7 +101,10 @@ const Profile = () => {
           <h1>Hey there, {firstName}</h1>
           <h2>Welcome back! What are we looking to do today?</h2>
           <div className="action-buttons">
-            <Button className="custom-buttons" href="#past-orders"> Recent Orders</Button>
+            <Button className="custom-buttons" href="#past-orders">
+              {" "}
+              Recent Orders
+            </Button>
             <Button onClick={() => stateChecker()}>View State</Button>
             <Button className="custom-buttons" onClick={logoutHandler}>
               Log Out
@@ -59,38 +112,7 @@ const Profile = () => {
           </div>
         </div>
       </div>
-      <div className="superheader" id="past-orders">Past Orders</div>
-      <h3 className="center">
-        Check out your past orders, click "Run it back" if you want to order the
-        same thing again!
-      </h3>
-      <div className="products">
-        {orders.map((order, index) => (
-          <Card key={order.id} className="past-orders">
-            <Card.Body>
-              <Card.Title>
-                Order #: {order.id} | Total: ${order.total}
-              </Card.Title>
-              <Card.Text></Card.Text>
-              <ul>
-                {order.order_item_set.map((line, index) => (
-                  <li key={line.item.name + index}>
-                    {line.item.name} {line.unit_price}
-                  </li>
-                ))}
-              </ul>
-              <Card.Footer className="dan-schneider center">
-                <Button
-                  className="custom-buttons card-buttons"
-                  onClick={() => runItBack(order.order_item_set)}
-                >
-                  Run it back
-                </Button>
-              </Card.Footer>
-            </Card.Body>
-          </Card>
-        ))}
-      </div>
+      <Past />
     </div>
   );
 };

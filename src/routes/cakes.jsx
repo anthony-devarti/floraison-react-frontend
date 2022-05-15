@@ -45,6 +45,8 @@ export default function Cakes() {
     console.log(cart);
   };
 
+  const containerVariants = state.containerVariants
+
   return (
     <div className="product-page">
       <div className="superheader">Cakes</div>

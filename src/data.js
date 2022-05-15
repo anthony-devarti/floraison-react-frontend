@@ -8,7 +8,7 @@ export async function axiosGet() {
 
 export async function axiosGetOrdersByUserId(id) {
   return axios
-    .get(process.env.REACT_APP_BASE + `?id=&user=${id}`)
+    .get(process.env.REACT_APP_BASE + `Orders/?id=&user=${id}`)
     .then((response) => response.data);
 }
 
