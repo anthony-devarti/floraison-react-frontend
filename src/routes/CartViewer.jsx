@@ -140,7 +140,8 @@ export default function CartViewer() {
   }
 
   function Empty(){
-    if (cart.length <1){
+    console.log("cart in empty function", cart.length)
+    if (cart.length<1){
       return(
         <>
         <h3 className="center">Nothing in here, yet!</h3>
@@ -153,6 +154,7 @@ export default function CartViewer() {
     <div className="cart">
       <div className="superheader">Cart</div>
       <h3 className="center">View the contents of your cart and checkout.</h3>
+      <Empty />
       <div className="products">
         {cart.map((item, index) => (
           <Card

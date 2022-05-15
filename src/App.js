@@ -63,6 +63,9 @@ function App() {
   //put the logo stuff here
   const logo = process.env.PUBLIC_URL + "/logo.svg";
 
+  function modalCloser(){
+    document.getElementById('body').style.className=""
+  }
 
   return (
     <div className="App">
@@ -109,12 +112,12 @@ function App() {
                 </Offcanvas.Header>
                 <Offcanvas.Body>
                   <Nav className="justify-content-end flex-grow-1 pe-3 hamburger">
-                    <Link to="/home">Home</Link>
-                    <Link to="/cookies">Cookies</Link>
-                    <Link to="/cakes">Cakes</Link>
-                    <Link to="/cupcakes">Cupcakes</Link>
-                    <Link to="/cart">Cart</Link>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/home" onClick={modalCloser}>Home</Link>
+                    <Link to="/cookies" onClick={modalCloser}>Cookies</Link>
+                    <Link to="/cakes" onClick={modalCloser}>Cakes</Link>
+                    <Link to="/cupcakes" onClick={modalCloser}>Cupcakes</Link>
+                    <Link to="/cart" onClick={modalCloser}>Cart</Link>
+                    <Link to="/profile" onClick={modalCloser}>Profile</Link>
                   </Nav>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>

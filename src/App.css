@@ -552,11 +552,12 @@ a {
     border: #8a99bf;
     color: white;
     font-family: 'Antonio', sans-serif;
-    height: 50vh;
+    height: 80vh;
 }
 
 .modal-body{
     font-size: 2rem;
+    overflow: scroll;
 }
 
 .modal-title{
