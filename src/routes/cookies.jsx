@@ -3,6 +3,7 @@ import { axiosGet } from "../data";
 import { Card, Button } from "react-bootstrap";
 import { useGlobalState } from "../components/GlobalState";
 import CustomCookiePlatter from "../components/CustomCookiePlatter";
+import { motion } from "framer-motion";
 
 export default function Cookies() {
   const [state, dispatch] = useGlobalState();
@@ -49,7 +50,7 @@ export default function Cookies() {
     (product) => product.category === 2 && product.published === true
   );
   return (
-    <main className="product-page">
+    <div className="product-page">
       <div className="superheader">Cookies</div>
       <h3 className="center">
         The best part of being an adult is you can just, like, buy cookies.  Literally whenever.
@@ -68,13 +69,15 @@ export default function Cookies() {
                 >
                   Add to Cart
                 </Button>
-                <p style={{ textAlign: "right" }}>{cookie.starting_price}</p>
+                <p style={{ position: "absolute", right: "20px" }}>
+                  ${cookie.starting_price}
+                </p>
               </Card.Footer>
             </Card.Body>
           </Card>
         ))}
       </div>
       <CustomCookiePlatter />
-    </main>
+    </div>
   );
 }

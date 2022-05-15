@@ -3,6 +3,7 @@ import { axiosGet } from "../data";
 import { useState } from "react";
 import { Card, Button } from "react-bootstrap";
 import { useGlobalState } from "../components/GlobalState";
+import { motion } from "framer-motion";
 
 export default function Cakes() {
   const [menu, setMenu] = useState([]);
@@ -45,7 +46,7 @@ export default function Cakes() {
   };
 
   return (
-    <main className="product-page">
+    <div className="product-page">
       <div className="superheader">Cakes</div>
       <h3 className="center">
         It's not a party if there's no cake.  I don't make the rules.
@@ -64,7 +65,7 @@ export default function Cakes() {
                 >
                   Add to Cart
                 </Button>
-                <p style={{ position: "absolute", right: "10px" }}>
+                <p style={{ position: "absolute", right: "20px" }}>
                   ${cake.starting_price}
                 </p>
               </Card.Footer>
@@ -72,6 +73,6 @@ export default function Cakes() {
           </Card>
         ))}
       </div>
-    </main>
+    </div>
   );
 }

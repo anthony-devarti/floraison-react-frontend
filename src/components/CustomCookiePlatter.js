@@ -258,7 +258,7 @@ export default function CustomCookiePlatter(cookieItems) {
       </p>
       <div className="products">
         <Card key="12" border="dark" className="product-cards">
-          <Card.Img variant="top" src={cookieImage} className="card-image" />
+          <Card.Img src={cookieImage} className="card-image" />
           <Card.Body>
             <Card.Title>12-Piece Cookie Platter</Card.Title>
             <Card.Text>
@@ -275,7 +275,7 @@ export default function CustomCookiePlatter(cookieItems) {
           </Card.Body>
         </Card>
         <Card key="24" border="dark" className="product-cards">
-          <Card.Img variant="top" src={cookieImage} className="card-image" />
+          <Card.Img src={cookieImage} className="card-image" />
           <Card.Body>
             <Card.Title>24-Piece Cookie Platter</Card.Title>
             <Card.Text>
@@ -292,7 +292,7 @@ export default function CustomCookiePlatter(cookieItems) {
           </Card.Body>
         </Card>
         <Card key="36" border="dark" className="product-cards">
-          <Card.Img variant="top" src={cookieImage} className="card-image" />
+          <Card.Img src={cookieImage} className="card-image" />
           <Card.Body>
             <Card.Title>36-Piece Cookie Platter</Card.Title>
             <Card.Text>

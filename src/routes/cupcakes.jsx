@@ -2,6 +2,7 @@ import { Card, Button } from "react-bootstrap";
 import { useState, useEffect } from "react";
 import { axiosGet } from "../data";
 import { useGlobalState } from "../components/GlobalState";
+import { motion, AnimatePresence } from "framer-motion";
 
 export default function Cupcakes() {
   const [menu, setMenu] = useState([]);
@@ -46,7 +47,7 @@ export default function Cupcakes() {
   };
 
   return (
-    <main className="product-page">
+    <div className="product-page">
       <div className="superheader">Cupcakes</div>
       <h3 className="center">
         They're like cakes, but no one expects you to share.
@@ -55,7 +56,6 @@ export default function Cupcakes() {
         {cupcakes.map((cupcake) => (
           <Card key={cupcake.name} border="dark" className="product-cards">
             <Card.Img
-              variant="top"
               src={cupcake.photo}
               className="card-image"
             />
@@ -63,19 +63,23 @@ export default function Cupcakes() {
               <Card.Title>{cupcake.name}</Card.Title>
               <Card.Text>
                 {cupcake.description}
-                {cupcake.price}
               </Card.Text>
+              <Card.Footer className="dan-schneider">
               <Button
                 onClick={() => addToCart(cupcake)}
                 className="custom-buttons"
                 variant="primary"
-              >
+                >
                 Add to Cart
               </Button>
+              <p style={{ position: "absolute", right: "20px" }}>
+                  ${cupcake.starting_price}
+                </p>
+              </Card.Footer>
             </Card.Body>
           </Card>
         ))}
       </div>
-    </main>
+    </div>
   );
 }

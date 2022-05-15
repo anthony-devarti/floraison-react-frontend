@@ -4,7 +4,7 @@ import { Card, Button } from 'react-bootstrap'
 export default function ProductCard(name, description, price, image) {
   return (
     <Card style={{ width: "18rem" }}>
-      <Card.Img variant="top" src={image} />
+      <Card.Img src={image} />
       <Card.Body>
         <Card.Title>{name}</Card.Title>
         <Card.Text>

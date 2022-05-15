@@ -2,6 +2,7 @@ import Tiles from "../components/Tiles"
 import Contact from "../components/Contact"
 import About from "../components/About"
 import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 export default function Home(){
 
@@ -75,10 +76,10 @@ export default function Home(){
     }, [position]);
 
     return (
-        <>
+        <div>
         <Tiles />
         <Contact />
         <About />
-        </>
+        </div>
     )
 }
