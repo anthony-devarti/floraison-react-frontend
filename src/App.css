@@ -208,6 +208,8 @@ a {
     .mobile-background {
         background-image: url('../public/images/deathbychocolatecake.jpeg');
         background-size: cover;
+        height: 90vh;
+        margin-top: -4vh;
     }
 
     .logo {
@@ -314,7 +316,7 @@ a {
     font-size: 4rem;
     color: white;
     font-family: 'Square Peg', cursive;
-    width: 110vw;
+    width: 100vw;
     max-height: 25vh;
     display: flex
 }
@@ -625,4 +627,10 @@ a {
   .form-row {
       display: flex;
       justify-content: space-between;
+  }
+
+  .strip-box {
+    display: flex;
+    flex-direction: column;
+    margin-left: 15px;
   }
