@@ -127,14 +127,6 @@ export default function CartViewer() {
         console.log(error);
       });
 
-    // need to get the order details:
-    // order Number
-    // order items :done
-    // order total :done
-
-    //generate a modal that includes all of the above information as well as:
-    // static thank you message :done
-    // close button :done
     clearCart();
     handleShow(true);
   }

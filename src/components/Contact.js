@@ -1,9 +1,37 @@
 import { Button } from "react-bootstrap";
+import { useState } from "react";
+import axios from "axios"
 
 export default function Contact() {
 
-  function handleSubmit() {
-    console.log("this doesn't do anything")
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+  function handleSubmit(e) {
+    e.preventDefault()
+    console.log("Submitting the form")
+    let submission = {
+      "Name": name,
+      "Email": email,
+      "Message": message
+    }
+    console.log(submission)
+    axios
+      .post(
+        process.env.REACT_APP_BASE + "message/",
+        submission
+      )
+      //need to save response.data to a variable
+      .then(function (response) {
+        console.log(response);
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+    setName("");
+    setEmail("");
+    setMessage("");
+
   }
 
   return (
@@ -23,7 +51,12 @@ export default function Contact() {
             <form id="contact-form" onSubmit={handleSubmit}>
               <div className="form-group">
                 <label htmlFor="name">Name</label>
-                <input type="text" className="form-control" />
+                <input
+                  type="name"
+                  className="form-control"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                />
               </div>
               <div className="form-group">
                 <label htmlFor="exampleInputEmail1">Email address</label>
@@ -31,11 +64,19 @@ export default function Contact() {
                   type="email"
                   className="form-control"
                   aria-describedby="emailHelp"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
               <div className="form-group">
                 <label htmlFor="message">Message</label>
-                <textarea className="form-control" rows="4"></textarea>
+                <textarea
+                  className="form-control"
+                  rows="4"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                >
+                </textarea>
               </div>
               <Button type="submit" variant="primary" className="custom-buttons form-submit-button">
                 SEND
@@ -53,7 +94,11 @@ export default function Contact() {
             <div className="form-group">
               <h1>Let's talk cake!</h1>
               <label htmlFor="name">Name</label>
-              <input type="text" className="form-control" />
+              <input
+                type="text"
+                className="form-control"
+                onChange={(e) => setName(e.target.value)}
+              />
             </div>
             <div className="form-group">
               <label htmlFor="exampleInputEmail1">Email address</label>
@@ -61,11 +106,17 @@ export default function Contact() {
                 type="email"
                 className="form-control"
                 aria-describedby="emailHelp"
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
             <div className="form-group">
               <label htmlFor="message">Message</label>
-              <textarea className="form-control" rows="1"></textarea>
+              <textarea
+                className="form-control"
+                rows="1"
+                onChange={(e) => setMessage(e.target.value)}
+              >
+              </textarea>
             </div>
             <Button type="submit" variant="primary" className="custom-buttons form-submit-button">
               SEND
